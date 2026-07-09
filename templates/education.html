@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+
+{% block title %}Edukasi — ShareWise{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/education.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="edu-hero">
+  <div class="container edu-hero-inner">
+    <div class="edu-hero-content">
+      <span class="section-tag">✦ Belajar & Lindungi</span>
+      <h1>Edukasi <span class="text-accent">Privasi Digital</span></h1>
+      <p class="edu-hero-desc">
+        Pelajari cara melindungi informasi pribadi di dunia maya dan pahami
+        risiko oversharing di media sosial.
+      </p>
+      <div class="edu-hero-meta">
+        <div class="meta-item"><span class="meta-icon">✦</span> Panduan Lengkap</div>
+        <div class="meta-divider"></div>
+        <div class="meta-item"><span class="meta-icon">✦</span> Tips Ahli</div>
+        <div class="meta-divider"></div>
+        <div class="meta-item"><span class="meta-icon">✦</span> Best Practices</div>
+      </div>
+    </div>
+    <div class="edu-hero-visual">
+      <div class="hero-shield">
+        <span class="shield-icon">✦</span>
+        <div class="shield-ring"></div>
+        <div class="shield-ring ring-2"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DEFINISI OVERSHARING ===== -->
+<section class="edu-overview">
+  <div class="container">
+    <div class="edu-overview-grid">
+      <div class="edu-overview-text">
+        <span class="section-tag">✦ Definisi</span>
+        <h2>Apa Itu Oversharing?</h2>
+        <p>
+          Oversharing adalah tindakan membagikan terlalu banyak informasi pribadi
+          di media sosial atau platform digital, yang dapat meningkatkan risiko
+          privasi dan keamanan siber.
+        </p>
+        <p>
+          Postingan yang tampak sepele bisa mengekspos data sensitif yang dimanfaatkan
+          untuk pencurian identitas, phishing, atau social engineering.
+        </p>
+        <div class="edu-overview-stats">
+          <div class="stat-block">
+            <span class="stat-number">73%</span>
+            <span class="stat-label">pengguna overshare</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-number">62%</span>
+            <span class="stat-label">ekspos data lokasi</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-number">45%</span>
+            <span class="stat-label">sebar kontak pribadi</span>
+          </div>
+        </div>
+      </div>
+      <div class="edu-overview-image">
+        <div class="image-card">
+          <span class="image-icon">✦</span>
+          <h4>Kenali Risikonya</h4>
+          <span class="image-tag">Tetap Waspada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIPE OVERSHARING ===== -->
+<section class="edu-types">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">✦ Kategori</span>
+      <h2>Tipe-Tipe Oversharing</h2>
+      <p>Informasi apa saja yang berisiko jika dibagikan secara publik.</p>
+    </div>
+    <div class="edu-types-grid">
+      <div class="type-card high-risk">
+        <div class="type-header">
+          <h3>Informasi Pribadi</h3>
+          <span class="type-badge danger">Risiko Tinggi</span>
+        </div>
+        <ul class="type-list">
+          <li>✦ Nomor Telepon</li>
+          <li>✦ Alamat Email</li>
+          <li>✦ Alamat Rumah</li>
+          <li>✦ Tanggal Lahir</li>
+          <li>✦ Dokumen Identitas</li>
+        </ul>
+        <p class="type-desc">Dapat digunakan untuk pencurian identitas, penipuan, dan serangan terarah.</p>
+      </div>
+      <div class="type-card medium-risk">
+        <div class="type-header">
+          <h3>Informasi Aktivitas</h3>
+          <span class="type-badge warning">Risiko Sedang</span>
+        </div>
+        <ul class="type-list">
+          <li>✦ Rencana Perjalanan</li>
+          <li>✦ Rutinitas Harian</li>
+          <li>✦ Lokasi Terkini</li>
+          <li>✦ Aktivitas Keluarga</li>
+          <li>✦ Jadwal Liburan</li>
+        </ul>
+        <p class="type-desc">Membuka pola yang bisa dimanfaatkan untuk stalking atau pencurian.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POTENSI RISIKO ===== -->
+<section class="edu-risks">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">✦ Ancaman</span>
+      <h2>Potensi Risiko</h2>
+      <p>Bahaya yang sering muncul akibat oversharing informasi pribadi.</p>
+    </div>
+    <div class="edu-risks-grid">
+      <div class="risk-edu-card" data-delay="0">
+        <div class="risk-edu-icon">✦</div>
+        <div class="risk-edu-content">
+          <h3>Pencurian Identitas</h3>
+          <p>Data pribadi dipakai untuk membuka rekening atau pinjaman atas nama Anda.</p>
+          <span class="risk-edu-badge high">Tinggi</span>
+        </div>
+      </div>
+      <div class="risk-edu-card" data-delay="100">
+        <div class="risk-edu-icon">✦</div>
+        <div class="risk-edu-content">
+          <h3>Serangan Phishing</h3>
+          <p>Penjahat siber membuat jebakan yang meyakinkan menggunakan info pribadi Anda.</p>
+          <span class="risk-edu-badge high">Tinggi</span>
+        </div>
+      </div>
+      <div class="risk-edu-card" data-delay="200">
+        <div class="risk-edu-icon">✦</div>
+        <div class="risk-edu-content">
+          <h3>Social Engineering</h3>
+          <p>Manipulasi psikologis agar Anda membocorkan informasi lebih lanjut.</p>
+          <span class="risk-edu-badge medium">Sedang</span>
+        </div>
+      </div>
+      <div class="risk-edu-card" data-delay="300">
+        <div class="risk-edu-icon">✦</div>
+        <div class="risk-edu-content">
+          <h3>Stalking</h3>
+          <p>Data lokasi dan rutinitas digunakan untuk melacak pergerakan Anda.</p>
+          <span class="risk-edu-badge medium">Sedang</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIPS KEAMANAN ===== -->
+<section class="edu-tips">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">✦ Best Practices</span>
+      <h2>Tips Keamanan</h2>
+      <p>Langkah praktis untuk melindungi privasi online Anda.</p>
+    </div>
+    <div class="edu-tips-grid">
+      <div class="tip-card">
+        <span class="tip-number">01</span>
+        <h3>Batasi Kontak Pribadi</h3>
+        <p>Hindari memposting nomor telepon, email, atau alamat rumah secara publik.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-number">02</span>
+        <h3>Nonaktifkan Lokasi</h3>
+        <p>Matikan layanan lokasi real-time dan jangan check-in di tempat umum.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-number">03</span>
+        <h3>Jangan Umbar Rencana</h3>
+        <p>Bagikan foto liburan setelah pulang, bukan saat masih berlangsung.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-number">04</span>
+        <h3>Cek Pengaturan Privasi</h3>
+        <p>Perbarui pengaturan privasi akun medsos secara berkala.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-number">05</span>
+        <h3>Pikir Sebelum Posting</h3>
+        <p>Tanyakan: "Apakah ini pantas dilihat orang asing?" sebelum membagikan.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-number">06</span>
+        <h3>Password Kuat &amp; 2FA</h3>
+        <p>Gunakan kata sandi unik dan aktifkan autentikasi dua faktor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTOH OVERSHARING vs AMAN ===== -->
+<section class="edu-examples">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">✦ Perbandingan</span>
+      <h2>Oversharing vs. Aman</h2>
+      <p>Perbedaan antara postingan berisiko dan yang aman.</p>
+    </div>
+    <div class="edu-examples-grid">
+      <div class="example-card danger-example">
+        <div class="example-badge danger-badge">✦ Berisiko</div>
+        <div class="example-content">
+          <p class="example-text">
+            "Mau ke Bali seminggu. Rumah kosong. Hubungi 08123456789."
+          </p>
+          <ul class="example-issues">
+            <li class="issue-item">✕ Membocorkan jadwal</li>
+            <li class="issue-item">✕ Memberi tahu rumah kosong</li>
+            <li class="issue-item">✕ Membagikan nomor telepon</li>
+            <li class="issue-item">✕ Ekspos lokasi</li>
+          </ul>
+          <div class="example-risk-score">
+            <span>Skor Risiko: 92%</span>
+            <div class="risk-bar"><div style="width:92%;"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="example-card safe-example">
+        <div class="example-badge safe-badge">✦ Aman</div>
+        <div class="example-content">
+          <p class="example-text">"Menikmati waktu berkualitas bareng keluarga."</p>
+          <ul class="example-issues safe-list">
+            <li class="issue-item safe">✓ Tidak ada kontak pribadi</li>
+            <li class="issue-item safe">✓ Tidak ada detail lokasi</li>
+            <li class="issue-item safe">✓ Tidak ada pengumuman jadwal</li>
+            <li class="issue-item safe">✓ Samar dan sadar privasi</li>
+          </ul>
+          <div class="example-risk-score safe-score">
+            <span>Skor Risiko: 12%</span>
+            <div class="risk-bar"><div style="width:12%;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="edu-cta">
+  <div class="container edu-cta-inner">
+    <h2>Siap uji <span class="text-accent">pengetahuan privasi</span> Anda?</h2>
+    <p>Ikuti kuis interaktif kami dan cari tahu seberapa sadar privasi Anda.</p>
+    <a href="/quiz" class="btn-primary btn-large">Mulai Kuis</a>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/education.js') }}"></script>
+{% endblock %}

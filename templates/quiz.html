@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Kuis — ShareWise{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO QUIZ ===== -->
+<section class="quiz-hero">
+  <div class="container quiz-hero-inner">
+    <div class="quiz-hero-content">
+      <span class="section-tag">✦ Uji Pengetahuan</span>
+      <h1>Kuis <span class="text-accent">Keamanan Digital</span></h1>
+      <p class="quiz-hero-desc">
+        Uji seberapa paham kamu tentang privasi dan risiko oversharing di dunia maya.
+        Jawab 10 pertanyaan dan lihat skormu!
+      </p>
+      <div class="quiz-hero-meta">
+        <div class="meta-item"><span class="meta-icon">✦</span> 10 Pertanyaan</div>
+        <div class="meta-divider"></div>
+        <div class="meta-item"><span class="meta-icon">✦</span> 4 Pilihan</div>
+        <div class="meta-divider"></div>
+        <div class="meta-item"><span class="meta-icon">✦</span> Waktu ±3 menit</div>
+      </div>
+    </div>
+    <div class="quiz-hero-visual">
+      <div class="hero-brain">
+        <span class="brain-icon">✦</span>
+        <div class="brain-ring"></div>
+        <div class="brain-ring ring-2"></div>
+        <div class="brain-ring ring-3"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUIZ SECTION ===== -->
+<section class="quiz-main">
+  <div class="container">
+
+    <!-- Quiz Container -->
+    <div class="quiz-container" id="quizContainer">
+
+      <!-- Status Bar -->
+      <div class="quiz-status" id="quizStatus">
+        <div class="status-left">
+          <span class="q-counter" id="qCounter">Pertanyaan 0 / 0</span>
+          <span class="q-tag" id="qTag">✦</span>
+        </div>
+        <div class="status-right">
+          <span class="score-badge" id="scoreBadge">✦ Skor: 0</span>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="quiz-progress">
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill" style="width:0%;"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="question-card" id="questionCard">
+        <div class="question-header">
+          <span class="q-number" id="qNumber">Q1</span>
+          <span class="q-category" id="qCategory">Umum</span>
+        </div>
+        <h3 class="question-text" id="questionText">Memuat pertanyaan...</h3>
+        <div class="options-grid" id="optionsGrid">
+          <!-- Opsi dibuat oleh JS -->
+        </div>
+        <button class="btn-primary next-btn" id="nextBtn" disabled>
+          Lanjut ✦
+        </button>
+      </div>
+
+      <!-- Result Card (hidden) -->
+      <div class="result-card" id="resultCard" style="display:none;">
+        <div class="result-icon" id="resultIcon">✦</div>
+        <h2 id="resultTitle">Skor Kamu</h2>
+        <div class="score-circle-big">
+          <span id="finalScore">0</span>
+          <span class="score-label">/ 100</span>
+        </div>
+        <p class="result-message" id="resultMessage">Kerja bagus!</p>
+        <div class="result-detail" id="resultDetail"></div>
+        <div class="result-actions">
+          <a href="/quiz" class="btn-outline">✦ Ulangi</a>
+          <a href="/education" class="btn-primary">✦ Pelajari Lagi</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="quiz-cta">
+  <div class="container quiz-cta-inner">
+    <h2>Sudah <span class="text-accent">siap</span> untuk tantangan berikutnya?</h2>
+    <p>Pelajari lebih dalam tentang privasi digital di halaman Edukasi kami.</p>
+    <a href="/education" class="btn-primary btn-large">✦ Jelajahi Edukasi</a>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}

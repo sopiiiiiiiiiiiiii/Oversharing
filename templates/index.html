@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}Digital Oversharing Risk Assessment{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Check in under 2 seconds
+            </div>
+            <h1>
+                Let’s check your post<br />
+                <span class="text-accent">before the world sees it.</span>
+            </h1>
+            <p class="hero-desc">
+                Paste what you're about to share. ShareWise gently flags phone numbers,
+                home addresses, and those "back home Tuesday" details — so you can decide
+                what stays and what goes.
+            </p>
+            <div class="hero-actions">
+                <a href="/analyze" class="btn-primary">Check my post</a>
+                <a href="#features" class="btn-outline">See what it catches</a>
+            </div>
+            <div class="hero-metrics">
+                <div class="metric">
+                    <span class="metric-value">99.7%</span>
+                    <span class="metric-label">Detection accuracy</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric">
+                    <span class="metric-value">2.1M</span>
+                    <span class="metric-label">Posts scanned</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric">
+                    <span class="metric-value">&lt;2s</span>
+                    <span class="metric-label">Per scan</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="visual-card">
+                <div class="scan-line" aria-hidden="true"></div>
+                <div class="mock-post-header">
+                    <div class="mock-avatar" aria-hidden="true"></div>
+                    <div>
+                        <div class="mock-name">Jordan Reyes</div>
+                        <div class="mock-handle">posting in 3 minutes</div>
+                    </div>
+                </div>
+                <p class="mock-body">
+                    Landed! Staying at <span class="redact">4 Birchwood Lane</span> through
+                    Sunday — text me at <span class="redact">(555) 019-2244</span> if you're
+                    around. House is empty till we're back 🏝️
+                </p>
+                <div class="visual-flags">
+                    <div class="flag-row">
+                        <span class="flag-label"><span class="flag-dot high"></span>Home address</span>
+                        <span class="flag-status">Flagged</span>
+                    </div>
+                    <div class="flag-row">
+                        <span class="flag-label"><span class="flag-dot high"></span>Phone number</span>
+                        <span class="flag-status">Flagged</span>
+                    </div>
+                    <div class="flag-row">
+                        <span class="flag-label"><span class="flag-dot med"></span>Vacant home signal</span>
+                        <span class="flag-status">Flagged</span>
+                    </div>
+                </div>
+                <div class="visual-score-wrap">
+                    <div>
+                        <span class="visual-title">Risk score</span><br />
+                        <span class="visual-score">76<span class="visual-score-max">/100</span></span>
+                    </div>
+                </div>
+                <div class="visual-progress">
+                    <div class="visual-progress-bar" style="width:76%;"></div>
+                </div>
+                <span class="visual-status">High risk — hold this post</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="features" id="features">
+    <div class="container">
+        <div class="section-heading">
+            <span class="section-tag">What it reads for</span>
+            <h2>Three kinds of leaks, one pass</h2>
+            <p>Every post gets checked against the same patterns a scammer or stalker would look for.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✦</div>
+                <h3>Identity details</h3>
+                <p>Phone numbers, emails, home addresses, birth dates — anything that ties a post back to a real person.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✦</div>
+                <h3>Location signals</h3>
+                <p>Live check-ins, travel dates, and the routines they reveal — like which nights your street is empty.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✦</div>
+                <h3>A score you can act on</h3>
+                <p>Not just a flag — a 0–100 score plus the specific line to edit before you hit post.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="workflow">
+    <div class="container">
+        <div class="section-heading">
+            <span class="section-tag">Process</span>
+            <h2>Four steps, in order</h2>
+            <p>Each stage feeds the next — detection has to finish before a score means anything.</p>
+        </div>
+        <div class="workflow-steps">
+            <div class="step">
+                <span class="step-number">01</span>
+                <h3>Paste your post</h3>
+                <p>Drop in the caption, comment, or bio you're about to publish.</p>
+            </div>
+            <span class="step-arrow">→</span>
+            <div class="step">
+                <span class="step-number">02</span>
+                <h3>We read it closely</h3>
+                <p>Pattern matching finds numbers, addresses, and dates hiding in plain sentences.</p>
+            </div>
+            <span class="step-arrow">→</span>
+            <div class="step">
+                <span class="step-number">03</span>
+                <h3>You get a score</h3>
+                <p>0 to 100, weighted by how easily each detail could be used against you.</p>
+            </div>
+            <span class="step-arrow">→</span>
+            <div class="step">
+                <span class="step-number">04</span>
+                <h3>Fix what's flagged</h3>
+                <p>Plain-language notes on exactly what to cut or rephrase.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== RISKS ===== -->
+<section class="risks">
+    <div class="container">
+        <div class="section-heading">
+            <span class="section-tag">Common leaks</span>
+            <h2>What people give away without noticing</h2>
+            <p>None of these look dangerous on their own. Together, they're a profile.</p>
+        </div>
+        <div class="risks-grid">
+            <div class="risk-card">
+                <div class="risk-header">
+                    <span class="risk-badge high">High</span>
+                </div>
+                <h3>Phone number</h3>
+                <p>Enables scam calls, SIM-swap attempts, and direct impersonation.</p>
+            </div>
+            <div class="risk-card">
+                <div class="risk-header">
+                    <span class="risk-badge high">High</span>
+                </div>
+                <h3>Home address</h3>
+                <p>Pins down where you sleep and who else lives there.</p>
+            </div>
+            <div class="risk-card">
+                <div class="risk-header">
+                    <span class="risk-badge medium">Medium</span>
+                </div>
+                <h3>Live location</h3>
+                <p>Shows exactly where you are, right now, to anyone watching.</p>
+            </div>
+            <div class="risk-card">
+                <div class="risk-header">
+                    <span class="risk-badge high">High</span>
+                </div>
+                <h3>Travel dates</h3>
+                <p>Tells burglars precisely when your home will sit empty.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta">
+    <div class="container cta-inner">
+        <h2>Run the check before you <span class="text-accent">hit post.</span></h2>
+        <p>Takes under two seconds. No account, no sign-up — just paste and check.</p>
+        <a href="/analyze" class="btn-primary btn-large">Check my post now</a>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}

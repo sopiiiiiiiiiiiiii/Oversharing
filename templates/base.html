@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShareWise — {% block title %}Digital Oversharing Risk Assessment{% endblock %}</title>
+    <meta name="description" content="Scan what you're about to post before it becomes a problem. ShareWise flags phone numbers, addresses, and location leaks in seconds." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <span class="logo-mark">SW</span>
+                <span class="logo-text">ShareWise</span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/" {% if request.path == '/' %}class="active"{% endif %}>Home</a></li>
+                <li><a href="/about" {% if request.path == '/about' %}class="active"{% endif %}>About</a></li>
+                <li><a href="/education" {% if request.path == '/education' %}class="active"{% endif %}>Education</a></li>
+                <li><a href="/quiz" {% if request.path == '/quiz' %}class="active"{% endif %}>Quiz</a></li>
+                <li><a href="/analyze" class="btn-nav {% if request.path == '/analyze' %}active{% endif %}">Analyze</a></li>
+            </ul>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    <span class="logo-mark">SW</span>
+                    <span class="logo-text">ShareWise</span>
+                </a>
+                <p>Helping you share with care, one post at a time.</p>
+            </div>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/education">Education</a>
+                <a href="/quiz">Quiz</a>
+                <a href="/analyze">Analyze</a>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 ShareWise. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

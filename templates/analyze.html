@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block title %}Analisis — ShareWise{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/analyze.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="analyze-hero">
+  <div class="container analyze-hero-inner">
+    <div class="analyze-hero-content">
+      <span class="section-tag">✦ Analisis</span>
+      <h1>Periksa <span class="text-accent">Postingan</span> Anda</h1>
+      <p class="analyze-hero-desc">
+        Tempel teks caption, tweet, atau status. Deteksi data sensitif,
+        kata kasar, analisis sentimen, dan dapatkan versi aman secara otomatis.
+      </p>
+      <div class="analyze-hero-meta">
+        <div class="meta-item"><span class="meta-icon">✦</span> Deteksi PII</div>
+        <div class="meta-divider"></div>
+        <div class="meta-item"><span class="meta-icon">✦</span> Analisis Sentimen</div>
+        <div class="meta-divider"></div>
+        <div class="meta-item"><span class="meta-icon">✦</span> Saran Perbaikan</div>
+      </div>
+    </div>
+    <div class="analyze-hero-visual">
+      <div class="hero-shield">
+        <span class="shield-icon">✦</span>
+        <div class="shield-ring"></div>
+        <div class="shield-ring ring-2"></div>
+        <div class="shield-ring ring-3"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAIN ANALYZE ===== -->
+<section class="analyze-main">
+  <div class="container">
+    <div class="analyze-layout">
+
+      <!-- ===== LEFT: INPUT ===== -->
+      <div class="analyze-left">
+        <div class="card input-card">
+          <div class="card-header">
+            <h3>✦ Masukkan Teks</h3>
+            <span class="text-muted">Caption, tweet, status, atau paragraf</span>
+          </div>
+          <textarea
+            id="inputText"
+            class="input-area"
+            placeholder="Tulis atau tempel teks di sini..."
+            rows="6"
+          >Hai guys! Lagi liburan di Bali nih, seru banget! Rumahku di Jalan Melati No 12, Bandung. Hubungi 08123456789 ya kalo mau main. Senang banget bisa liburan! 🤩</textarea>
+          <div id="errorMsg" class="error-msg" style="display: none;"></div>
+          <div class="input-footer">
+            <button id="analyzeBtn" class="btn-primary btn-block">
+              <span>✦ Analisis Sekarang</span>
+            </button>
+            <button id="clearBtn" class="btn-outline btn-small">
+              ✦ Bersihkan
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== RIGHT: RESULTS ===== -->
+      <div class="analyze-right">
+        <div class="card result-card" id="resultContainer">
+          <!-- Placeholder -->
+          <div class="placeholder-state" id="placeholderState">
+            <div class="placeholder-icon">✦</div>
+            <h4>Belum ada hasil</h4>
+            <p>Masukkan teks dan klik "Analisis Sekarang" untuk melihat potensi risiko privasi.</p>
+          </div>
+
+          <!-- Result content (hidden by default) -->
+          <div class="result-content" id="resultContent" style="display: none;">
+            <!-- Risk Score -->
+            <div class="result-score-section">
+              <div class="score-ring">
+                <span class="score-number" id="riskScore">0</span>
+                <span class="score-label">/100</span>
+              </div>
+              <div class="score-info">
+                <span class="score-status" id="riskStatus">Aman</span>
+                <span class="score-desc" id="riskDesc">Teks ini tampaknya aman.</span>
+              </div>
+            </div>
+
+            <!-- Findings -->
+            <div class="result-findings">
+              <h4>✦ Temuan</h4>
+              <div id="findingsList" class="findings-list"></div>
+            </div>
+
+            <!-- Sentiment -->
+            <div class="result-sentiment">
+              <h4>✦ Analisis Sentimen</h4>
+              <div class="sentiment-display" id="sentimentDisplay">
+                <span class="sentiment-label">Netral</span>
+                <div class="sentiment-bar">
+                  <div class="sentiment-fill" id="sentimentFill" style="width:50%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Safe Version -->
+            <div class="result-safe">
+              <h4>✦ Versi Aman</h4>
+              <div class="safe-version" id="safeVersion">
+                <p>Klik tombol di bawah untuk melihat saran perbaikan.</p>
+              </div>
+              <button class="btn-outline btn-small" id="copySafeBtn">✦ Salin</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SUB PANELS ===== -->
+    <div class="sub-panels">
+      <!-- Stats -->
+      <div class="card stats-card">
+        <div class="card-header">
+          <h4>✦ Statistik Cepat</h4>
+        </div>
+        <div class="stats-mini">
+          <div class="stat-box">
+            <span class="stat-num" id="totalAnalyses">0</span>
+            <span class="stat-desc">Analisis</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num" id="totalFindings">0</span>
+            <span class="stat-desc">Temuan</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num" id="avgRisk">0%</span>
+            <span class="stat-desc">Risiko Rata-rata</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- History -->
+      <div class="card history-card">
+        <div class="card-header space-between">
+          <h4>✦ Riwayat</h4>
+          <button id="clearHistoryBtn" class="btn-text-danger">✕ Hapus</button>
+        </div>
+        <div id="historyList" class="history-list">
+          <p class="empty-state">Belum ada riwayat analisis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="analyze-cta">
+  <div class="container analyze-cta-inner">
+    <h2>Pelajari lebih lanjut tentang <span class="text-accent">privasi digital</span></h2>
+    <p>Kunjungi halaman Edukasi untuk tips dan panduan keamanan online.</p>
+    <a href="/education" class="btn-primary btn-large">✦ Jelajahi Edukasi</a>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/analyze.js') }}"></script>
+{% endblock %}
