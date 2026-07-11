@@ -4408,14 +4408,42 @@ p { color: var(--text-secondary); }
    ============================================================ */
 
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: flex; /* muncul di HP */
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        margin-inline: 0;
+        border-radius: 0;
+        background: rgba(255, 246, 248, 0.95);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border-light);
+        padding: 0 var(--space-sm);
+        box-shadow: 0 2px 12px -6px rgba(0,0,0,0.04);
     }
 
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+        position: relative;
+    }
+
+    /* Toggle tetap di samping kanan */
+    .menu-toggle {
+        display: flex !important;
+        margin-left: auto;
+        padding: 0.3rem 0.6rem;
+        background: var(--bg-soft);
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-light);
+    }
+
+    /* Menu dropdown di BAWAH navbar */
     .nav-links {
         display: none;
         position: absolute;
-        top: 100%;
+        top: 100%; /* ini kunci: muncul tepat di bawah navbar */
         left: 0;
         right: 0;
         flex-direction: column;
@@ -4428,7 +4456,7 @@ p { color: var(--text-secondary); }
         box-shadow: var(--shadow-hover);
         margin: 0;
         list-style: none;
-        z-index: 50;
+        z-index: 100; /* biar di atas konten */
     }
 
     .nav-links.is-open {
