@@ -182,3 +182,100 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- 4. Console ----
     console.log('✦ ShareWise — Back to Top ready ✦');
 });
+// ============================================================
+// SCRIPT — Toggle Menu + Back to Top + Transisi
+// ============================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ---- 1. TOGGLE MENU ----
+    const toggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (toggle && navLinks) {
+        toggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('is-open');
+            toggle.classList.toggle('is-active', isOpen);
+            toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        // Tutup menu saat link diklik
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('is-open');
+                toggle.classList.remove('is-active');
+                toggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Tutup menu saat klik di luar
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar')) {
+                navLinks.classList.remove('is-open');
+                toggle.classList.remove('is-active');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    // ---- 2. NAVBAR SCROLL ----
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+        const setScrolled = () => {
+            navbar.classList.toggle('is-scrolled', window.scrollY > 8);
+        };
+        setScrolled();
+        window.addEventListener('scroll', setScrolled, { passive: true });
+    }
+
+    // ---- 3. BACK TO TOP ----
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        const toggleBackToTop = () => {
+            backToTop.classList.toggle('is-visible', window.scrollY > 300);
+        };
+
+        toggleBackToTop();
+
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    toggleBackToTop();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ---- 4. PAGE TRANSITION ----
+    const transitionEl = document.getElementById('pageTransition');
+    if (transitionEl) {
+        transitionEl.classList.remove('is-exiting');
+
+        const links = document.querySelectorAll('a:not([href^="#"]):not([target="_blank"])');
+        const navigateWithTransition = (url) => {
+            transitionEl.classList.add('is-exiting');
+            setTimeout(() => {
+                window.location.href = url;
+            }, 400);
+        };
+
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('/') && !href.startsWith('//')) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navigateWithTransition(href);
+                });
+            }
+        });
+    }
+
+    console.log('✦ ShareWise — ready ✦');
+});
