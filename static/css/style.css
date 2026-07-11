@@ -4364,17 +4364,24 @@ p { color: var(--text-secondary); }
    ============================================================ */
 
 .menu-toggle {
-    display: none;
+    display: none; /* default: sembunyi di desktop */
     flex-direction: column;
     gap: 5px;
     background: none;
     border: none;
-    padding: 0.4rem;
+    padding: 0.5rem;
     cursor: pointer;
     z-index: 60;
+    border-radius: var(--radius-sm);
+    transition: background 0.2s var(--ease-out);
+}
+
+.menu-toggle:hover {
+    background: var(--bg-soft);
 }
 
 .menu-toggle span {
+    display: block;
     width: 26px;
     height: 2.5px;
     background: var(--text-dark);
@@ -4397,12 +4404,12 @@ p { color: var(--text-secondary); }
 }
 
 /* ============================================================
-   NAVBAR RESPONSIVE (dengan toggle)
+   NAVBAR RESPONSIVE (Toggle muncul di HP)
    ============================================================ */
 
 @media (max-width: 768px) {
     .menu-toggle {
-        display: flex;
+        display: flex; /* muncul di HP */
     }
 
     .nav-links {
@@ -4434,10 +4441,17 @@ p { color: var(--text-secondary); }
 
     .nav-links a:not(.btn-nav) {
         display: block;
-        padding: 0.5rem 0.4rem;
+        padding: 0.6rem 0.4rem;
         font-size: 0.9rem;
         border-bottom: 1px solid var(--border-light);
         text-align: center;
+        color: var(--text-secondary);
+        text-decoration: none;
+    }
+
+    .nav-links a:not(.btn-nav):hover {
+        background: var(--bg-soft);
+        border-radius: var(--radius-sm);
     }
 
     .nav-links a:not(.btn-nav):last-child {
@@ -4447,9 +4461,10 @@ p { color: var(--text-secondary); }
     .nav-links .btn-nav {
         display: block;
         text-align: center;
-        margin-top: 0.3rem;
-        padding: 0.5rem;
+        margin-top: 0.4rem;
+        padding: 0.6rem;
         font-size: 0.9rem;
+        border-radius: var(--radius-md);
     }
 
     .navbar {
@@ -4465,23 +4480,59 @@ p { color: var(--text-secondary); }
         border-right: none;
         border-top: none;
         padding: 0 var(--space-sm);
+        box-shadow: 0 2px 12px -6px rgba(0,0,0,0.04);
     }
 
     .nav-container {
         height: 56px;
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo-text {
+        font-size: 0.9rem;
+    }
+
+    .logo-mark {
+        width: 32px;
+        height: 32px;
+    }
+
+    .logo-mark svg {
+        width: 18px;
+        height: 18px;
     }
 }
 
 @media (max-width: 480px) {
     .nav-links a:not(.btn-nav) {
         font-size: 0.8rem;
-        padding: 0.4rem 0.3rem;
+        padding: 0.5rem 0.3rem;
     }
 
     .nav-links .btn-nav {
         font-size: 0.8rem;
-        padding: 0.4rem;
+        padding: 0.5rem;
+    }
+
+    .nav-container {
+        height: 50px;
+    }
+
+    .logo-text {
+        font-size: 0.8rem;
+    }
+
+    .logo-mark {
+        width: 28px;
+        height: 28px;
+    }
+
+    .logo-mark svg {
+        width: 16px;
+        height: 16px;
     }
 }
 
