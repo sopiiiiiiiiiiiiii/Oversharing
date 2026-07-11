@@ -50,7 +50,7 @@ ul {
 }
 
 /* ============================================================
-   NAVBAR — Full fix: toggle di samping, dropdown di bawah
+   NAVBAR — Full (Desktop + Mobile dengan Toggle)
    ============================================================ */
 
 .navbar {
@@ -176,10 +176,7 @@ ul {
   background: var(--pink-dark);
 }
 
-/* ============================================================
-   TOGGLE BUTTON (hamburger) — default: sembunyi di desktop
-   ============================================================ */
-
+/* ---- Toggle (hamburger) – sembunyi di desktop ---- */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -218,9 +215,10 @@ ul {
 }
 
 /* ============================================================
-   RESPONSIVE — munculkan toggle & ubah menu jadi dropdown
+   NAVBAR RESPONSIVE
    ============================================================ */
 
+/* Tablet (860px) */
 @media (max-width: 860px) {
   .nav-links {
     gap: var(--space-sm);
@@ -246,12 +244,14 @@ ul {
   }
 }
 
+/* Mobile (768px) — muncul toggle, dropdown di bawah */
 @media (max-width: 768px) {
   .navbar {
     margin-inline: var(--space-sm);
     padding: 0 var(--space-sm);
     border-radius: var(--radius-md);
     overflow: visible !important;
+    top: 0;
   }
 
   .nav-container {
@@ -268,7 +268,7 @@ ul {
 
   /* Sembunyikan menu horizontal, ganti jadi dropdown absolute */
   .nav-links {
-    display: none; /* default: hidden */
+    display: none;
     position: absolute;
     top: 100%; /* tepat di bawah navbar */
     left: 0;
@@ -317,7 +317,6 @@ ul {
     border-bottom: none;
   }
 
-  /* Tombol analyze di dropdown */
   .nav-links .btn-nav {
     display: block;
     text-align: center;
@@ -357,6 +356,7 @@ ul {
   }
 }
 
+/* Mobile kecil (480px) */
 @media (max-width: 480px) {
   .navbar {
     margin-inline: 0.4rem;
@@ -395,6 +395,278 @@ ul {
   .nav-links .btn-nav {
     font-size: 0.8rem;
     padding: 0.5rem;
+  }
+}
+
+/* ============================================================
+   FOOTER — Premium (Full di desktop, pendek di HP)
+   ============================================================ */
+
+.footer-premium {
+  background: var(--bg-body);
+  border-top: 1px solid var(--border-light);
+  padding-block: var(--space-lg) 0;
+  margin-top: var(--space-md);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* Brand Column */
+.brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+}
+
+.footer-logo .logo-mark {
+  width: 28px;
+  height: 28px;
+  background: var(--pink);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.7rem;
+  color: white;
+}
+
+.footer-logo .logo-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-dark);
+}
+
+.footer-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 28ch;
+  margin: 0;
+}
+
+/* Social Links */
+.footer-social {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.1rem;
+}
+
+.social-link {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all 0.2s var(--ease-out);
+  text-decoration: none;
+}
+
+.social-link:hover {
+  border-color: var(--pink);
+  color: var(--pink-dark);
+  background: var(--bg-soft);
+  transform: translateY(-1px);
+}
+
+.social-link svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+}
+
+/* Footer Columns */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.footer-heading {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dark);
+  margin: 0 0 0.1rem 0;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.footer-links li {
+  margin: 0;
+}
+
+.footer-links a {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s var(--ease-out);
+  display: inline-block;
+  padding-block: 0.1rem;
+}
+
+.footer-links a:hover {
+  color: var(--pink-dark);
+}
+
+/* Bottom Bar */
+.footer-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-xs);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.footer-copy {
+  letter-spacing: 0.02em;
+}
+
+.footer-tagline {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--pink-dark);
+  opacity: 0.6;
+}
+
+/* ============================================================
+   FOOTER RESPONSIVE — pendek di HP
+   ============================================================ */
+
+@media (max-width: 980px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+  }
+
+  .brand-col {
+    grid-column: 1 / -1;
+  }
+
+  .footer-desc {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: var(--space-xs) !important;
+    padding-bottom: var(--space-xs) !important;
+  }
+
+  .brand-col {
+    grid-column: 1 / -1 !important;
+    text-align: center !important;
+    margin-bottom: 0 !important;
+  }
+
+  .brand-col .footer-logo {
+    justify-content: center !important;
+  }
+
+  .footer-col {
+    align-items: center !important;
+    text-align: center !important;
+    gap: 0.1rem !important;
+  }
+
+  .footer-heading {
+    font-size: 0.6rem !important;
+    margin-bottom: 0 !important;
+  }
+
+  .footer-links {
+    gap: 0.05rem !important;
+  }
+
+  .footer-links a {
+    font-size: 0.7rem !important;
+    padding-block: 0.05rem !important;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 0 !important;
+    padding-block: var(--space-xs) !important;
+  }
+
+  .footer-copy {
+    font-size: 0.65rem !important;
+  }
+
+  .footer-premium {
+    padding-block: var(--space-sm) 0 !important;
+    margin-top: var(--space-sm) !important;
+  }
+
+  .footer-logo .logo-mark {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .footer-logo .logo-mark svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .footer-logo .logo-text {
+    font-size: 0.7rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .brand-col {
+    grid-column: 1 / -1 !important;
+  }
+
+  .footer-links a {
+    font-size: 0.65rem !important;
+  }
+
+  .footer-heading {
+    font-size: 0.55rem !important;
   }
 }
 /* ============================================================
@@ -4437,303 +4709,4 @@ p { color: var(--text-secondary); }
     transform: translateY(-7.5px) rotate(-45deg);
 }
 
-/* ============================================================
-   NAVBAR MOBILE — Toggle di samping, dropdown di bawah
-   ============================================================ */
 
-@media (max-width: 768px) {
-    .navbar {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        margin-inline: 0;
-        border-radius: 0;
-        background: rgba(255, 246, 248, 0.95);
-        backdrop-filter: blur(14px);
-        border-bottom: 1px solid var(--border-light);
-        padding: 0 var(--space-sm);
-        box-shadow: 0 2px 12px -6px rgba(0,0,0,0.04);
-        overflow: visible !important; /* penting! */
-    }
-
-    .nav-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 56px;
-        position: relative;
-        overflow: visible !important;
-    }
-
-    /* Logo di kiri */
-    .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        text-decoration: none;
-        flex-shrink: 0;
-    }
-
-    .logo-text {
-        font-size: 0.95rem;
-    }
-
-    .logo-mark {
-        width: 32px;
-        height: 32px;
-    }
-
-    .logo-mark svg {
-        width: 18px;
-        height: 18px;
-    }
-
-    /* Toggle di kanan */
-    .menu-toggle {
-        display: flex !important;
-        flex-direction: column;
-        gap: 5px;
-        background: none;
-        border: none;
-        padding: 0.4rem;
-        cursor: pointer;
-        z-index: 60;
-        background: var(--bg-soft);
-        border-radius: var(--radius-sm);
-        border: 1px solid var(--border-light);
-        flex-shrink: 0;
-    }
-
-    .menu-toggle span {
-        display: block;
-        width: 22px;
-        height: 2.5px;
-        background: var(--text-dark);
-        border-radius: var(--radius-full);
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .menu-toggle.is-active span:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-    }
-
-    .menu-toggle.is-active span:nth-child(2) {
-        opacity: 0;
-        transform: scaleX(0);
-    }
-
-    .menu-toggle.is-active span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* Menu dropdown — muncul di BAWAH navbar */
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%; /* di bawah navbar */
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        background: var(--bg-card);
-        border: 1px solid var(--border-light);
-        border-radius: 0 0 var(--radius-md) var(--radius-md);
-        padding: var(--space-sm) var(--space-md);
-        box-shadow: var(--shadow-hover);
-        list-style: none;
-        z-index: 55;
-        margin: 0;
-        overflow: visible;
-        border-top: none;
-    }
-
-    .nav-links.is-open {
-        display: flex;
-    }
-
-    .nav-links li {
-        margin: 0;
-    }
-
-    .nav-links a:not(.btn-nav) {
-        display: block;
-        padding: 0.6rem 0.4rem;
-        font-size: 0.9rem;
-        border-bottom: 1px solid var(--border-light);
-        text-align: center;
-        color: var(--text-secondary);
-        text-decoration: none;
-        transition: background 0.2s;
-    }
-
-    .nav-links a:not(.btn-nav):hover {
-        background: var(--bg-soft);
-        border-radius: var(--radius-sm);
-    }
-
-    .nav-links a:not(.btn-nav):last-child {
-        border-bottom: none;
-    }
-
-    .nav-links .btn-nav {
-        display: block;
-        text-align: center;
-        margin-top: 0.4rem;
-        padding: 0.6rem;
-        font-size: 0.9rem;
-        border-radius: var(--radius-md);
-        background: var(--pink);
-        color: white;
-        font-weight: 700;
-        text-decoration: none;
-    }
-
-    .nav-links .btn-nav:hover {
-        background: var(--pink-bright);
-    }
-
-    /* Aktif link */
-    .nav-links a.active:not(.btn-nav) {
-        color: var(--pink-dark);
-        font-weight: 600;
-    }
-
-    .nav-links a.active:not(.btn-nav)::after {
-        display: none;
-    }
-}
-
-/* HP sangat kecil */
-@media (max-width: 480px) {
-    .nav-container {
-        height: 50px;
-    }
-
-    .logo-text {
-        font-size: 0.8rem;
-    }
-
-    .logo-mark {
-        width: 28px;
-        height: 28px;
-    }
-
-    .logo-mark svg {
-        width: 16px;
-        height: 16px;
-    }
-
-    .menu-toggle span {
-        width: 20px;
-        height: 2px;
-    }
-
-    .nav-links a:not(.btn-nav) {
-        font-size: 0.8rem;
-        padding: 0.5rem 0.3rem;
-    }
-
-    .nav-links .btn-nav {
-        font-size: 0.8rem;
-        padding: 0.5rem;
-    }
-}
-/* ============================================================
-   FOOTER — PENDEEK DI HP
-   ============================================================ */
-
-/* Sembunyiin elemen yang gak penting di HP */
-@media (max-width: 640px) {
-    .hide-mobile {
-        display: none !important;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr 1fr 1fr !important;
-        gap: var(--space-sm) !important;
-        padding-bottom: var(--space-xs) !important;
-    }
-
-    .brand-col {
-        grid-column: 1 / -1 !important;
-        text-align: center !important;
-        margin-bottom: 0 !important;
-    }
-
-    .brand-col .footer-logo {
-        justify-content: center !important;
-    }
-
-    .footer-col {
-        align-items: center !important;
-        text-align: center !important;
-        gap: 0.1rem !important;
-    }
-
-    .footer-heading {
-        font-size: 0.6rem !important;
-        margin-bottom: 0 !important;
-    }
-
-    .footer-links {
-        gap: 0.05rem !important;
-    }
-
-    .footer-links a {
-        font-size: 0.7rem !important;
-        padding-block: 0.05rem !important;
-    }
-
-    .footer-bottom-bar {
-        flex-direction: column !important;
-        text-align: center !important;
-        gap: 0 !important;
-        padding-block: var(--space-xs) !important;
-    }
-
-    .footer-copy {
-        font-size: 0.65rem !important;
-    }
-
-    .footer-premium {
-        padding-block: var(--space-sm) 0 !important;
-        margin-top: var(--space-sm) !important;
-    }
-
-    .footer-grid {
-        gap: var(--space-xs) !important;
-    }
-
-    .footer-logo .logo-mark {
-        width: 22px !important;
-        height: 22px !important;
-    }
-
-    .footer-logo .logo-mark svg {
-        width: 14px !important;
-        height: 14px !important;
-    }
-
-    .footer-logo .logo-text {
-        font-size: 0.7rem !important;
-    }
-}
-
-@media (max-width: 400px) {
-    .footer-grid {
-        grid-template-columns: 1fr 1fr !important;
-    }
-
-    .brand-col {
-        grid-column: 1 / -1 !important;
-    }
-
-    .footer-links a {
-        font-size: 0.65rem !important;
-    }
-
-    .footer-heading {
-        font-size: 0.55rem !important;
-    }
-}
