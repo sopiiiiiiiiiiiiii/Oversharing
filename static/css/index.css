@@ -1,0 +1,40 @@
+/* Halaman beranda — animasi & dekorasi tambahan */
+
+@keyframes float-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content > * {
+  animation: float-up 0.7s var(--ease-out) both;
+}
+
+.hero-badge   { animation-delay: 0s; }
+.hero h1      { animation-delay: 0.08s; }
+.hero-desc    { animation-delay: 0.16s; }
+.hero-actions { animation-delay: 0.24s; }
+.hero-metrics { animation-delay: 0.32s; }
+
+.hero-visual {
+  animation: float-up 0.8s var(--ease-out) 0.2s both;
+}
+
+/* Dekorasi titik-titik imut di sekitar hero */
+.hero-grid::before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-image:
+    radial-gradient(circle, var(--border-light) 1px, transparent 1px);
+  background-size: 16px 16px;
+  top: -40px;
+  right: -40px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content > *, .hero-visual { animation: none; }
+}

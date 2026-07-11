@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block title %}Analisis — ShareWise{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/analyze.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="analyze-hero">
+  <div class="container analyze-hero-inner">
+    <div class="analyze-hero-content">
+      <span class="section-tag">Analisis</span>
+      <h1>Periksa <span class="text-accent">Postingan</span> Anda</h1>
+      <p class="analyze-hero-desc">
+        Tempel teks caption, tweet, atau status. Deteksi data sensitif,
+        kata kasar, analisis sentimen, dan dapatkan versi aman secara otomatis.
+      </p>
+      <div class="analyze-hero-meta">
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Deteksi PII
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9"/></svg>
+          Analisis Sentimen
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Saran Perbaikan
+        </div>
+      </div>
+    </div>
+    <div class="analyze-hero-visual">
+      <div class="hero-shield">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <polyline points="9 12 11 14 15 10"/>
+        </svg>
+        <div class="shield-ring"></div>
+        <div class="shield-ring ring-2"></div>
+        <div class="shield-ring ring-3"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAIN ===== -->
+<section class="analyze-main">
+  <div class="container">
+    <div class="analyze-layout">
+
+      <!-- ===== INPUT ===== -->
+      <div class="analyze-left">
+        <div class="card input-card">
+          <div class="card-header">
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Masukkan Teks
+            </h3>
+            <span class="text-muted">Caption, tweet, status, atau paragraf</span>
+          </div>
+          <textarea
+            id="inputText"
+            class="input-area"
+            placeholder="Tulis atau tempel teks di sini..."
+            rows="6"
+          >Hai guys! Lagi liburan di Bali nih, seru banget! Rumahku di Jalan Melati No 12, Bandung. Hubungi 08123456789 ya kalo mau main. Senang banget bisa liburan!</textarea>
+          <div class="input-counter" id="charCounter">
+            <span id="charCount">0</span> karakter
+          </div>
+          <div id="errorMsg" class="error-msg" style="display: none;"></div>
+          <div class="input-footer">
+            <button id="analyzeBtn" class="btn-primary btn-block">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <span>Analisis Sekarang</span>
+            </button>
+            <button id="clearBtn" class="btn-outline btn-small">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              Bersihkan
+            </button>
+          </div>
+          <div class="input-shortcut">
+            <kbd>Ctrl</kbd> + <kbd>Enter</kbd> untuk analisis
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== RESULTS ===== -->
+      <div class="analyze-right">
+        <div class="card result-card" id="resultContainer">
+
+          <!-- Placeholder -->
+          <div class="placeholder-state" id="placeholderState">
+            <div class="placeholder-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"/></svg>
+            </div>
+            <h4>Belum ada hasil</h4>
+            <p>Masukkan teks dan klik "Analisis Sekarang" untuk melihat potensi risiko privasi.</p>
+          </div>
+
+          <!-- Loading -->
+          <div class="loading-state" id="loadingState" style="display:none;">
+            <div class="loader"></div>
+            <p>Menganalisis teks...</p>
+          </div>
+
+          <!-- Result -->
+          <div class="result-content" id="resultContent" style="display: none;">
+
+            <!-- Score -->
+            <div class="result-score-section">
+              <div class="score-ring">
+                <span class="score-number" id="riskScore">0</span>
+                <span class="score-label">/100</span>
+              </div>
+              <div class="score-info">
+                <span class="score-status" id="riskStatus">Aman</span>
+                <span class="score-desc" id="riskDesc">Teks ini tampaknya aman.</span>
+              </div>
+            </div>
+
+            <!-- Findings -->
+            <div class="result-findings">
+              <h4>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"/></svg>
+                Temuan
+              </h4>
+              <div id="findingsList" class="findings-list"></div>
+            </div>
+
+            <!-- Sentiment -->
+            <div class="result-sentiment">
+              <h4>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                Analisis Sentimen
+              </h4>
+              <div class="sentiment-display" id="sentimentDisplay">
+                <span class="sentiment-label" id="sentimentLabel">Netral</span>
+                <div class="sentiment-bar">
+                  <div class="sentiment-fill" id="sentimentFill" style="width:50%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Safe Version -->
+            <div class="result-safe">
+              <h4>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                Versi Aman
+              </h4>
+              <div class="safe-version" id="safeVersion">
+                <p>Klik tombol di bawah untuk melihat saran perbaikan.</p>
+              </div>
+              <button class="btn-outline btn-small" id="copySafeBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Salin
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SUB PANELS ===== -->
+    <div class="sub-panels">
+      <!-- Stats -->
+      <div class="card stats-card">
+        <div class="card-header">
+          <h4>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12v-2a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v2"/><circle cx="12" cy="16" r="5"/><path d="M12 11v5"/></svg>
+            Statistik Cepat
+          </h4>
+        </div>
+        <div class="stats-mini">
+          <div class="stat-box">
+            <span class="stat-num" id="totalAnalyses">0</span>
+            <span class="stat-desc">Analisis</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num" id="totalFindings">0</span>
+            <span class="stat-desc">Temuan</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num" id="avgRisk">0%</span>
+            <span class="stat-desc">Risiko Rata-rata</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- History -->
+      <div class="card history-card">
+        <div class="card-header space-between">
+          <h4>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Riwayat
+          </h4>
+          <button id="clearHistoryBtn" class="btn-text-danger">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            Hapus
+          </button>
+        </div>
+        <div id="historyList" class="history-list">
+          <p class="empty-state">Belum ada riwayat analisis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="analyze-cta">
+  <div class="container analyze-cta-inner">
+    <h2>Pelajari lebih lanjut tentang <span class="text-accent">privasi digital</span></h2>
+    <p>Kunjungi halaman Edukasi untuk tips dan panduan keamanan online.</p>
+    <a href="/education" class="btn-primary btn-large">
+      <span>Jelajahi Edukasi</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/analyze.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShareWise — {% block title %}Digital Oversharing Risk Assessment{% endblock %}</title>
+    <meta name="description" content="Scan what you're about to post before it becomes a problem. ShareWise flags phone numbers, addresses, and location leaks in seconds." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+    <!-- ===== PAGE TRANSITION WRAPPER ===== -->
+    <div class="page-transition" id="pageTransition">
+        <div class="page-content">
+
+            <!-- ===== NAVBAR ===== -->
+            <nav class="navbar" id="navbar">
+                <div class="container nav-container">
+                    <a href="/" class="logo" id="logoLink">
+                        <!-- Logo baru: SVG perisai + teks -->
+                        <span class="logo-mark">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <polyline points="9 12 11 14 15 10"/>
+                            </svg>
+                        </span>
+                        <span class="logo-text">ShareWise</span>
+                    </a>
+
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="/" {% if request.path == '/' %}class="active"{% endif %}>Home</a></li>
+                        <li><a href="/about" {% if request.path == '/about' %}class="active"{% endif %}>About</a></li>
+                        <li><a href="/education" {% if request.path == '/education' %}class="active"{% endif %}>Education</a></li>
+                        <li><a href="/quiz" {% if request.path == '/quiz' %}class="active"{% endif %}>Quiz</a></li>
+                        <li><a href="/analyze" class="btn-nav {% if request.path == '/analyze' %}active{% endif %}">Analyze</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- ===== MAIN CONTENT ===== -->
+            <main class="main-content" id="mainContent">
+                {% block content %}{% endblock %}
+            </main>
+
+            <!-- ===== FOOTER PREMIUM ===== -->
+            <footer class="footer-premium">
+                <div class="container">
+                    <div class="footer-grid">
+                        <div class="footer-col brand-col">
+                            <a href="/" class="logo footer-logo">
+                                <span class="logo-mark">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                        <polyline points="9 12 11 14 15 10"/>
+                                    </svg>
+                                </span>
+                                <span class="logo-text">ShareWise</span>
+                            </a>
+                            <p class="footer-desc">
+                                Platform keamanan digital yang membantu kamu
+                                mendeteksi risiko privasi sebelum postingan
+                                tersebar ke publik.
+                            </p>
+                            <div class="footer-social">
+                                <a href="#" class="social-link" aria-label="Twitter">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4l11.733 16h4.267l-11.733 -16z"/>
+                                        <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link" aria-label="Instagram">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link" aria-label="LinkedIn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                        <rect x="2" y="9" width="4" height="12"/>
+                                        <circle cx="4" cy="4" r="2"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link" aria-label="YouTube">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="footer-col">
+                            <h4 class="footer-heading">Product</h4>
+                            <ul class="footer-links">
+                                <li><a href="/analyze">Privacy Scan</a></li>
+                                <li><a href="/quiz">Security Quiz</a></li>
+                                <li><a href="/education">Learning Hub</a></li>
+                                <li><a href="#">Changelog</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h4 class="footer-heading">Company</h4>
+                            <ul class="footer-links">
+                                <li><a href="/about">About Us</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h4 class="footer-heading">Legal</h4>
+                            <ul class="footer-links">
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms of Service</a></li>
+                                <li><a href="#">Cookie Policy</a></li>
+                                <li><a href="#">Security</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-bottom-bar">
+                        <span class="footer-copy">&copy; 2026 ShareWise. All rights reserved.</span>
+                        <span class="footer-tagline">Protect your digital identity</span>
+                    </div>
+                </div>
+            </footer>
+
+        </div> <!-- /page-content -->
+    </div> <!-- /page-transition -->
+        <!-- ===== BACK TO TOP BUTTON ===== -->
+    <button 
+        id="backToTop" 
+        class="back-to-top" 
+        aria-label="Kembali ke atas"
+        title="Kembali ke atas"
+    >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
+

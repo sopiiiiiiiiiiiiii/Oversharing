@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}About — ShareWise{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="about-hero">
+  <div class="container about-hero-inner">
+    <div class="about-hero-content">
+      <span class="section-tag">Tentang Kami</span>
+      <h1>Lindungi <span class="text-accent">Identitas Digitalmu</span></h1>
+      <p class="about-hero-desc">
+        ShareWise adalah platform edukasi keamanan digital yang membantu kamu
+        mengidentifikasi potensi risiko privasi akibat oversharing informasi pribadi di media sosial.
+      </p>
+      <div class="about-hero-stats">
+        <div class="stat-item">
+          <span class="stat-number" data-count="2.1">0</span>
+          <span class="stat-label">Juta+ Postingan Dianalisis</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="99.7">0</span>
+          <span class="stat-label">% Akurasi</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="24">0</span>
+          <span class="stat-label">/7 Proteksi</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-hero-visual">
+      <div class="hero-illustration">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <polyline points="9 12 11 14 15 10"/>
+        </svg>
+        <div class="ring"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OVERVIEW ===== -->
+<section class="about-overview reveal-section">
+  <div class="container">
+    <div class="about-overview-grid">
+      <div class="about-overview-text">
+        <span class="section-tag">Sekilas Platform</span>
+        <h2>Apa Itu ShareWise?</h2>
+        <p>
+          ShareWise adalah platform digital security awareness yang dirancang untuk
+          membantu kamu mengenali bahaya oversharing di social media.
+          Cukup masukkan teks postingan, dan sistem kami akan mendeteksi
+          informasi sensitif yang bisa membahayakan privasi kamu.
+        </p>
+        <p>
+          Dengan teknologi AI-powered detection, ShareWise mampu mengenali
+          nomor telepon, alamat, lokasi real-time, jadwal perjalanan, dan
+          data pribadi lainnya yang sering tidak sengaja tersebar.
+        </p>
+      </div>
+      <div class="about-overview-image">
+        <div class="image-card">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <h4>Privacy First</h4>
+          <span class="image-tag">Enterprise Grade</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MISSION & VISION ===== -->
+<section class="about-mission reveal-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">Misi Kami</span>
+      <h2>Misi & Visi</h2>
+      <p>Mendorong kesadaran privasi digital lewat asesmen risiko cerdas.</p>
+    </div>
+    <div class="mission-grid">
+      <div class="mission-card">
+        <div class="card-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3>Misi</h3>
+        <p>
+          Memberdayakan individu dan organisasi dengan tools serta pengetahuan
+          untuk melindungi privasi digital mereka, dengan mengidentifikasi dan
+          mengurangi risiko akibat oversharing informasi pribadi di dunia maya.
+        </p>
+      </div>
+      <div class="mission-card">
+        <div class="card-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <h3>Visi</h3>
+        <p>
+          Dunia di mana privasi digital menjadi hak fundamental, dan setiap orang
+          punya kesadaran serta alat untuk melindungi data pribadinya dari
+          penyalahgunaan dan eksploitasi.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VALUES ===== -->
+<section class="about-values reveal-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">Nilai Kami</span>
+      <h2>Dibangun di Atas Kepercayaan & Transparansi</h2>
+      <p>Komitmen kami terhadap privasi dan keamanan digital.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <h4>Privacy First</h4>
+        <p>Data kamu milik kamu. Kami tidak menyimpan atau membagikan kontenmu.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h4>AI-Powered</h4>
+        <p>Model machine learning canggih untuk deteksi risiko yang akurat.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h4>Dampak Global</h4>
+        <p>Membantu jutaan pengguna di seluruh dunia menjaga identitas digital mereka.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+            <polyline points="17 6 23 6 23 12"/>
+          </svg>
+        </div>
+        <h4>Peningkatan Berkelanjutan</h4>
+        <p>Update rutin untuk menghadapi ancaman privasi terbaru.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section class="about-team reveal-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">Tim Kami</span>
+      <h2>Kenalan dengan Kreator</h2>
+      <p>Otak di balik ShareWise.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="avatar">S</div>
+        <h4>Soviii</h4>
+        <span class="role">Founder & Developer</span>
+        <p class="bio">Passionate di bidang cybersecurity, privacy protection, dan membangun tools yang bikin kamu tetap aman online.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="about-cta reveal-section">
+  <div class="container about-cta-inner">
+    <h2>Siap lindungi <span class="text-accent">identitas digitalmu</span>?</h2>
+    <p>Mulai asesmen risiko privasi dalam hitungan detik. No sign-up required.</p>
+    <a href="/analyze" class="btn-primary btn-large">Cek Postingan Sekarang</a>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/about.js') }}"></script>
+{% endblock %}

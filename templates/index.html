@@ -1,0 +1,273 @@
+{% extends "base.html" %}
+
+{% block title %}ShareWise — Cek Risiko Privasi Postingan Anda{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Real-time Privacy Scan
+      </div>
+      <h1>
+        Cek postinganmu<br />
+        <span class="text-accent">sebelum dunia melihatnya.</span>
+      </h1>
+      <p class="hero-desc">
+        Tempel teks yang mau kamu bagikan. ShareWise akan mendeteksi nomor telepon,
+        alamat rumah, dan detail pribadi lainnya — biar kamu tahu mana yang aman
+        dan mana yang perlu diedit.
+      </p>
+      <div class="hero-actions">
+        <a href="/analyze" class="btn-primary">Scan Now</a>
+        <a href="#features" class="btn-outline">Lihat Fitur</a>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric">
+          <span class="metric-value">99.7%</span>
+          <span class="metric-label">Akurasi Deteksi</span>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric">
+          <span class="metric-value">2.1M</span>
+          <span class="metric-label">Postingan Diproses</span>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric">
+          <span class="metric-value">&lt;2s</span>
+          <span class="metric-label">Waktu Analisis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="visual-card">
+        <div class="scan-line" aria-hidden="true"></div>
+        <div class="mock-post-header">
+          <div class="mock-avatar" aria-hidden="true"></div>
+          <div>
+            <div class="mock-name">Jordan Reyes</div>
+            <div class="mock-handle">akan posting dalam 3 menit</div>
+          </div>
+        </div>
+        <p class="mock-body">
+          Landed! Staying at <span class="redact">4 Birchwood Lane</span> through
+          Sunday — text me at <span class="redact">(555) 019-2244</span> if you're
+          around. House is empty till we're back.
+        </p>
+        <div class="visual-flags">
+          <div class="flag-row">
+            <span class="flag-label"><span class="flag-dot high"></span>Alamat Rumah</span>
+            <span class="flag-status">Terindikasi</span>
+          </div>
+          <div class="flag-row">
+            <span class="flag-label"><span class="flag-dot high"></span>Nomor Telepon</span>
+            <span class="flag-status">Terindikasi</span>
+          </div>
+          <div class="flag-row">
+            <span class="flag-label"><span class="flag-dot med"></span>Rumah Kosong</span>
+            <span class="flag-status">Terindikasi</span>
+          </div>
+        </div>
+        <div class="visual-score-wrap">
+          <div>
+            <span class="visual-title">Risk Score</span>
+            <span class="visual-score">76<span class="visual-score-max">/100</span></span>
+          </div>
+        </div>
+        <div class="visual-progress">
+          <div class="visual-progress-bar" style="width:76%;"></div>
+        </div>
+        <span class="visual-status">Risiko Tinggi — Sebaiknya diedit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">Fitur</span>
+      <h2>Tiga Lapis <span class="text-accent">Perlindungan</span></h2>
+      <p>Setiap postingan diperiksa dengan pola yang sama seperti yang digunakan oleh pelaku kejahatan siber.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <h3>Identitas Pribadi</h3>
+        <p>Nomor telepon, email, alamat rumah, tanggal lahir — semua yang bisa melacak balik ke identitas aslimu.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <h3>Lokasi & Aktivitas</h3>
+        <p>Check-in real-time, jadwal perjalanan, dan rutinitas yang bisa mengungkap kapan rumahmu kosong.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <h3>Skor Risiko</h3>
+        <p>Bukan sekadar peringatan — dapatkan skor 0–100 plus rekomendasi edit yang spesifik untuk setiap postingan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="workflow">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">Proses</span>
+      <h2>Empat Langkah, <span class="text-accent">Satu Tujuan</span></h2>
+      <p>Setiap tahap saling terhubung — deteksi harus selesai sebelum skor bisa berarti.</p>
+    </div>
+    <div class="workflow-steps">
+      <div class="step">
+        <span class="step-number">01</span>
+        <h3>Tempel Teks</h3>
+        <p>Masukkan caption, komentar, atau bio yang mau kamu publikasikan.</p>
+      </div>
+      <span class="step-arrow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </span>
+      <div class="step">
+        <span class="step-number">02</span>
+        <h3>Analisis Mendalam</h3>
+        <p>Algoritma kami mendeteksi angka, alamat, dan pola tersembunyi dalam kalimat.</p>
+      </div>
+      <span class="step-arrow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </span>
+      <div class="step">
+        <span class="step-number">03</span>
+        <h3>Dapatkan Skor</h3>
+        <p>0–100, dihitung dari seberapa mudah detailmu bisa disalahgunakan.</p>
+      </div>
+      <span class="step-arrow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </span>
+      <div class="step">
+        <span class="step-number">04</span>
+        <h3>Edit & Publikasi</h3>
+        <p>Dapatkan saran jelas tentang bagian mana yang perlu dihapus atau diubah.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RISKS ===== -->
+<section class="risks">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">Risiko</span>
+      <h2>Yang Sering <span class="text-accent">Terlewatkan</span></h2>
+      <p>Tidak ada yang terlihat berbahaya sendirian. Tapi bersama, mereka jadi profil lengkap.</p>
+    </div>
+    <div class="risks-grid">
+      <div class="risk-card">
+        <div class="risk-header">
+          <span class="risk-badge high">High</span>
+        </div>
+        <h3>Nomor Telepon</h3>
+        <p>Pintu masuk untuk scam call, SIM-swap, dan peniruan identitas.</p>
+      </div>
+      <div class="risk-card">
+        <div class="risk-header">
+          <span class="risk-badge high">High</span>
+        </div>
+        <h3>Alamat Rumah</h3>
+        <p>Menunjukkan tempat tinggalmu dan siapa saja yang tinggal di sana.</p>
+      </div>
+      <div class="risk-card">
+        <div class="risk-header">
+          <span class="risk-badge medium">Medium</span>
+        </div>
+        <h3>Lokasi Real-time</h3>
+        <p>Memberi tahu orang asing di mana kamu berada, saat ini juga.</p>
+      </div>
+      <div class="risk-card">
+        <div class="risk-header">
+          <span class="risk-badge high">High</span>
+        </div>
+        <h3>Jadwal Perjalanan</h3>
+        <p>Memberi tahu maling kapan rumahmu kosong dan berapa lama.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIAL / SOCIAL PROOF ===== -->
+<section class="testimonial">
+  <div class="container">
+    <div class="testimonial-inner">
+      <div class="testimonial-content">
+        <span class="section-tag">Testimonial</span>
+        <blockquote>
+          "Saya kira postingan saya aman. Ternyata ada nomor telepon yang ke-scan.
+          ShareWise bantu saya sadar sebelum terlambat."
+        </blockquote>
+        <cite>
+          <span class="cite-name">Dinda P.</span>
+          <span class="cite-role">Content Creator, 2.4M followers</span>
+        </cite>
+      </div>
+      <div class="testimonial-stats">
+        <div class="ts-item">
+          <span class="ts-number">4.9</span>
+          <span class="ts-label">Rating Pengguna</span>
+        </div>
+        <div class="ts-divider"></div>
+        <div class="ts-item">
+          <span class="ts-number">10K+</span>
+          <span class="ts-label">Pengguna Aktif</span>
+        </div>
+        <div class="ts-divider"></div>
+        <div class="ts-item">
+          <span class="ts-number">98%</span>
+          <span class="ts-label">Kepuasan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta">
+  <div class="container cta-inner">
+    <h2>Siap cek postinganmu <span class="text-accent">sebelum diposting?</span></h2>
+    <p>Kurang dari 2 detik. Tanpa daftar, tanpa ribet — cukup tempel dan cek.</p>
+    <a href="/analyze" class="btn-primary btn-large">Cek Sekarang</a>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}

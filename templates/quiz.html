@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}Kuis — ShareWise{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="quiz-hero">
+  <div class="container quiz-hero-inner">
+    <div class="quiz-hero-content">
+      <span class="section-tag">Uji Pengetahuan</span>
+      <h1>Kuis <span class="text-accent">Keamanan Digital</span></h1>
+      <p class="quiz-hero-desc">
+        Uji seberapa paham kamu tentang privasi dan risiko oversharing di dunia maya.
+        Jawab 10 pertanyaan dan lihat skormu!
+      </p>
+      <div class="quiz-hero-meta">
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          10 Pertanyaan
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          4 Pilihan
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ±3 Menit
+        </div>
+      </div>
+    </div>
+    <div class="quiz-hero-visual">
+      <div class="hero-brain">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1.27A7 7 0 0 1 17 22h-4a3 3 0 0 1-6 0H7A7 7 0 0 1 2.27 19H1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/>
+          <circle cx="9" cy="9" r="1"/>
+          <circle cx="15" cy="9" r="1"/>
+          <circle cx="10" cy="13" r="1"/>
+          <circle cx="14" cy="13" r="1"/>
+        </svg>
+        <div class="brain-ring"></div>
+        <div class="brain-ring ring-2"></div>
+        <div class="brain-ring ring-3"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUIZ ===== -->
+<section class="quiz-main">
+  <div class="container">
+
+    <div class="quiz-container" id="quizContainer">
+
+      <!-- Status -->
+      <div class="quiz-status" id="quizStatus">
+        <div class="status-left">
+          <span class="q-counter" id="qCounter">Pertanyaan 0 / 0</span>
+          <span class="q-tag" id="qTag">—</span>
+        </div>
+        <div class="status-right">
+          <span class="score-badge" id="scoreBadge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Skor: 0
+          </span>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="quiz-progress">
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill" style="width:0%;"></div>
+        </div>
+        <span class="progress-label" id="progressLabel">0%</span>
+      </div>
+
+      <!-- Question -->
+      <div class="question-card" id="questionCard">
+        <div class="question-header">
+          <span class="q-number" id="qNumber">Q1</span>
+          <span class="q-category" id="qCategory">Umum</span>
+        </div>
+        <h3 class="question-text" id="questionText">Memuat pertanyaan...</h3>
+        <div class="options-grid" id="optionsGrid">
+          <!-- Opsi dibuat JS -->
+        </div>
+        <div class="question-footer">
+          <button class="btn-primary next-btn" id="nextBtn" disabled>
+            <span>Lanjut</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="result-card" id="resultCard" style="display:none;">
+        <div class="result-icon" id="resultIcon">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h2 id="resultTitle">Skor Kamu</h2>
+        <div class="score-circle-big">
+          <span id="finalScore">0</span>
+          <span class="score-label">/ 100</span>
+        </div>
+        <p class="result-message" id="resultMessage">Kerja bagus!</p>
+        <div class="result-detail" id="resultDetail"></div>
+        <div class="result-actions">
+          <a href="/quiz" class="btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            Ulangi
+          </a>
+          <a href="/education" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+            Pelajari Lagi
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="quiz-cta">
+  <div class="container quiz-cta-inner">
+    <h2>Sudah <span class="text-accent">siap</span> untuk tantangan berikutnya?</h2>
+    <p>Pelajari lebih dalam tentang privasi digital di halaman Edukasi kami.</p>
+    <a href="/education" class="btn-primary btn-large">
+      <span>Jelajahi Edukasi</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}
