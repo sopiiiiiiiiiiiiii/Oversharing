@@ -1,140 +1,82 @@
-// ShareWise — shared site behavior
-
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.getElementById('menuToggle');
-  const links = document.getElementById('navLinks');
-
-  if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      const isOpen = links.classList.toggle('is-open');
-      toggle.classList.toggle('is-active', isOpen);
-      toggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    links.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        links.classList.remove('is-open');
-        toggle.classList.remove('is-active');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  const navbar = document.getElementById('navbar');
-  if (navbar) {
-    const setScrolled = () => {
-      navbar.classList.toggle('is-scrolled', window.scrollY > 8);
-    };
-    setScrolled();
-    window.addEventListener('scroll', setScrolled, { passive: true });
-  }
-});
 // ============================================================
-// SCRIPT — Transisi halus + navbar scroll
+// SHAREWISE — SCRIPT UTAMA (Clean Version)
+// Menu Toggle | Navbar Scroll | Back to Top | Page Transition
 // ============================================================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
 
-  // ---- 1. Navbar scroll ----
-  const navbar = document.getElementById('navbar');
-  if (navbar) {
-    const setScrolled = () => {
-      navbar.classList.toggle('is-scrolled', window.scrollY > 8);
-    };
-    setScrolled();
-    window.addEventListener('scroll', setScrolled, { passive: true });
-  }
+    // ============================================================
+    // 1. TOGGLE MENU (Hamburger)
+    // ============================================================
 
-  // ---- 2. Page transition smooth ----
-  const transitionEl = document.getElementById('pageTransition');
-  const links = document.querySelectorAll('a:not([href^="#"]):not([target="_blank"])');
+    const toggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
 
-  // Cegah transisi berlebihan saat back/forward
-  let isNavigating = false;
+    if (toggle && navLinks) {
 
-  const navigateWithTransition = (url) => {
-    if (isNavigating) return;
-    isNavigating = true;
+        // --- Buka/tutup menu saat toggle diklik ---
+        toggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = navLinks.classList.toggle('is-open');
+            toggle.classList.toggle('is-active', isOpen);
+            toggle.setAttribute('aria-expanded', String(isOpen));
+        });
 
-    // Aktifkan exit animation
-    transitionEl.classList.add('is-exiting');
+        // --- Tutup menu saat salah satu link diklik ---
+        navLinks.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('is-open');
+                toggle.classList.remove('is-active');
+                toggle.setAttribute('aria-expanded', 'false');
+            });
+        });
 
-    // Tunggu animasi selesai, baru pindah
-    setTimeout(() => {
-      window.location.href = url;
-    }, 500); // durasi sesuai CSS (0.5s)
-  };
+        // --- Tutup menu saat klik di luar navbar ---
+        document.addEventListener('click', function(e) {
+            var navbar = document.querySelector('.navbar');
+            if (navbar && !navbar.contains(e.target)) {
+                navLinks.classList.remove('is-open');
+                toggle.classList.remove('is-active');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
 
-  // Pasang event listener ke semua link internal
-  links.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && href.startsWith('/') && !href.startsWith('//')) {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        navigateWithTransition(href);
-      });
+        console.log('✓ Menu toggle ready');
+    } else {
+        console.warn('⚠️ Menu toggle element not found');
     }
-  });
 
-  // ---- 3. Reset state saat halaman dimuat ----
-  if (transitionEl) {
-    // Hapus class is-exiting jika ada (misal dari back/forward)
-    transitionEl.classList.remove('is-exiting');
+    // ============================================================
+    // 2. NAVBAR SCROLL EFFECT
+    // ============================================================
 
-    // Tambah class no-animation untuk mencegah flash di load pertama
-    transitionEl.classList.add('no-animation');
-    setTimeout(() => {
-      transitionEl.classList.remove('no-animation');
-    }, 100);
-  }
-
-  // ---- 4. Handle popstate (back/forward) ----
-  window.addEventListener('popstate', () => {
-    if (transitionEl) {
-      transitionEl.classList.remove('is-exiting');
-    }
-    isNavigating = false;
-  });
-
-  // ---- 5. Console ----
-  console.log('✦ ShareWise — Smooth page transitions ready ✦');
-});
-// ============================================================
-// SCRIPT — Back to Top + Navbar + Transisi
-// ============================================================
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    // ---- 1. Navbar scroll effect ----
-    const navbar = document.getElementById('navbar');
+    var navbar = document.getElementById('navbar');
     if (navbar) {
-        const setScrolled = () => {
+        var setScrolled = function() {
             navbar.classList.toggle('is-scrolled', window.scrollY > 8);
         };
         setScrolled();
         window.addEventListener('scroll', setScrolled, { passive: true });
+        console.log('✓ Navbar scroll ready');
     }
 
-    // ---- 2. Back to Top Button ----
-    const backToTop = document.getElementById('backToTop');
+    // ============================================================
+    // 3. BACK TO TOP BUTTON
+    // ============================================================
 
+    var backToTop = document.getElementById('backToTop');
     if (backToTop) {
-        // Tampilkan/sembunyikan tombol
-        const toggleBackToTop = () => {
-            const scrollY = window.scrollY;
-            // Muncul setelah scroll lebih dari 300px
-            const threshold = 300;
-            backToTop.classList.toggle('is-visible', scrollY > threshold);
+
+        var toggleBackToTop = function() {
+            backToTop.classList.toggle('is-visible', window.scrollY > 300);
         };
 
-        // Jalankan pertama kali
         toggleBackToTop();
 
-        // Event scroll (dengan throttle sederhana)
-        let ticking = false;
-        window.addEventListener('scroll', () => {
+        var ticking = false;
+        window.addEventListener('scroll', function() {
             if (!ticking) {
-                window.requestAnimationFrame(() => {
+                window.requestAnimationFrame(function() {
                     toggleBackToTop();
                     ticking = false;
                 });
@@ -142,140 +84,64 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
 
-        // Klik → smooth scroll ke atas
-        backToTop.addEventListener('click', () => {
+        backToTop.addEventListener('click', function() {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
 
-        // Aksesibilitas: keyboard (Enter/Space sudah otomatis untuk tombol)
+        console.log('✓ Back to Top ready');
     }
 
-    // ---- 3. Page transition (jika pakai) ----
-    const transitionEl = document.getElementById('pageTransition');
+    // ============================================================
+    // 4. PAGE TRANSITION (Smooth navigation)
+    // ============================================================
+
+    var transitionEl = document.getElementById('pageTransition');
     if (transitionEl) {
-        // Hapus class is-exiting jika ada (dari back/forward)
+
+        // Reset state
         transitionEl.classList.remove('is-exiting');
 
-        // Tangkap semua link internal
-        const links = document.querySelectorAll('a:not([href^="#"]):not([target="_blank"])');
-        const navigateWithTransition = (url) => {
+        // Ambil semua link internal
+        var links = document.querySelectorAll('a:not([href^="#"]):not([target="_blank"])');
+        var isNavigating = false;
+
+        var navigateWithTransition = function(url) {
+            if (isNavigating) return;
+            isNavigating = true;
+
             transitionEl.classList.add('is-exiting');
-            setTimeout(() => {
+
+            setTimeout(function() {
                 window.location.href = url;
             }, 400);
         };
 
-        links.forEach(link => {
-            const href = link.getAttribute('href');
+        links.forEach(function(link) {
+            var href = link.getAttribute('href');
             if (href && href.startsWith('/') && !href.startsWith('//')) {
-                link.addEventListener('click', (e) => {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
                     navigateWithTransition(href);
                 });
             }
         });
-    }
 
-    // ---- 4. Console ----
-    console.log('✦ ShareWise — Back to Top ready ✦');
-});
-// ============================================================
-// SCRIPT — Toggle Menu + Back to Top + Transisi
-// ============================================================
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    // ---- 1. TOGGLE MENU ----
-    const toggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-
-    if (toggle && navLinks) {
-        toggle.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('is-open');
-            toggle.classList.toggle('is-active', isOpen);
-            toggle.setAttribute('aria-expanded', String(isOpen));
+        // Reset saat back/forward
+        window.addEventListener('popstate', function() {
+            transitionEl.classList.remove('is-exiting');
+            isNavigating = false;
         });
 
-        // Tutup menu saat link diklik
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('is-open');
-                toggle.classList.remove('is-active');
-                toggle.setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        // Tutup menu saat klik di luar
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.navbar')) {
-                navLinks.classList.remove('is-open');
-                toggle.classList.remove('is-active');
-                toggle.setAttribute('aria-expanded', 'false');
-            }
-        });
+        console.log('✓ Page transition ready');
     }
 
-    // ---- 2. NAVBAR SCROLL ----
-    const navbar = document.getElementById('navbar');
-    if (navbar) {
-        const setScrolled = () => {
-            navbar.classList.toggle('is-scrolled', window.scrollY > 8);
-        };
-        setScrolled();
-        window.addEventListener('scroll', setScrolled, { passive: true });
-    }
+    // ============================================================
+    // 5. READY
+    // ============================================================
 
-    // ---- 3. BACK TO TOP ----
-    const backToTop = document.getElementById('backToTop');
-    if (backToTop) {
-        const toggleBackToTop = () => {
-            backToTop.classList.toggle('is-visible', window.scrollY > 300);
-        };
+    console.log('✦ ShareWise — All systems ready ✦');
 
-        toggleBackToTop();
-
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    toggleBackToTop();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }, { passive: true });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
-    // ---- 4. PAGE TRANSITION ----
-    const transitionEl = document.getElementById('pageTransition');
-    if (transitionEl) {
-        transitionEl.classList.remove('is-exiting');
-
-        const links = document.querySelectorAll('a:not([href^="#"]):not([target="_blank"])');
-        const navigateWithTransition = (url) => {
-            transitionEl.classList.add('is-exiting');
-            setTimeout(() => {
-                window.location.href = url;
-            }, 400);
-        };
-
-        links.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && href.startsWith('/') && !href.startsWith('//')) {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    navigateWithTransition(href);
-                });
-            }
-        });
-    }
-
-    console.log('✦ ShareWise — ready ✦');
 });
