@@ -670,7 +670,7 @@ ul {
   }
 }
 /* ============================================================
-   EDUCATION PAGE — Premium dengan Animasi & Video
+   EDUCATION PAGE — Full Styling
    ============================================================ */
 
 /* ---- Animasi reveal ---- */
@@ -1218,86 +1218,119 @@ ul {
   margin-top: var(--space-sm);
 }
 
-/* ---- Video ---- */
-.edu-video {
+/* ---- Articles ---- */
+.edu-articles {
   padding-block: var(--space-2xl);
   border-top: 1px solid var(--border-light);
 }
 
-.video-grid {
+.articles-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-md);
-  margin-bottom: var(--space-md);
 }
 
-.video-card {
+.article-card {
   background: var(--bg-card);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  overflow: hidden;
+  padding: var(--space-md);
   box-shadow: var(--shadow-card);
   transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+  display: flex;
+  flex-direction: column;
 }
 
-.video-card:hover {
+.article-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
 }
 
-.video-embed {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
-  overflow: hidden;
-  background: var(--bg-soft);
-}
-
-.video-embed iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.video-info {
-  padding: var(--space-sm) var(--space-md);
-}
-
-.video-info h4 {
+.article-badge {
+  display: inline-block;
   font-family: var(--font-display);
-  font-size: var(--step--1);
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.8rem;
+  border-radius: var(--radius-full);
+  background: var(--bg-soft);
+  color: var(--pink-dark);
+  border: 1px solid var(--border-light);
+  margin-bottom: var(--space-xs);
+  align-self: flex-start;
+}
+
+.article-card h3 {
+  font-size: var(--step-0);
   color: var(--text-dark);
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+
+.article-excerpt {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+  flex: 1;
+}
+
+.article-full {
+  display: none;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.7;
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-light);
+}
+
+.article-full.open {
+  display: block;
+}
+
+.article-full p,
+.article-full li {
+  margin-bottom: 0.4rem;
+}
+
+.article-full ul,
+.article-full ol {
+  padding-left: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.article-full li {
   margin-bottom: 0.2rem;
 }
 
-.video-info p {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin: 0;
-}
-
-.video-extra {
-  text-align: center;
-  margin-top: var(--space-md);
-}
-
-.video-extra-text {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-}
-
-.video-extra-text a {
+.btn-article-toggle {
+  background: none;
+  border: none;
   color: var(--pink-dark);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
   font-weight: 600;
-  text-decoration: none;
+  cursor: pointer;
+  padding: 0.3rem 0;
+  align-self: flex-start;
+  transition: color 0.2s var(--ease-out);
 }
 
-.video-extra-text a:hover {
+.btn-article-toggle:hover {
+  color: var(--pink-bright);
   text-decoration: underline;
+}
+
+.btn-article-toggle::after {
+  content: ' ▼';
+  font-size: 0.6rem;
+}
+
+.btn-article-toggle.active::after {
+  content: ' ▲';
 }
 
 /* ---- Tips ---- */
@@ -1492,66 +1525,6 @@ ul {
   color: #3DDBD9;
 }
 
-/* ---- Resources ---- */
-.edu-resources {
-  padding-block: var(--space-2xl);
-  border-top: 1px solid var(--border-light);
-}
-
-.resources-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-md);
-}
-
-.resource-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
-  text-decoration: none;
-  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
-  display: block;
-}
-
-.resource-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-}
-
-.resource-badge {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--pink-dark);
-  background: var(--bg-soft);
-  padding: 0.1rem 0.8rem;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--border-light);
-  margin-bottom: var(--space-xs);
-}
-
-.resource-card h4 {
-  font-family: var(--font-display);
-  font-size: var(--step-0);
-  color: var(--text-dark);
-  margin-bottom: 0.2rem;
-}
-
-.resource-card p {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: var(--space-xs);
-}
-
-.resource-read {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--pink-dark);
-}
-
 /* ---- Feedback ---- */
 .edu-feedback {
   padding-block: var(--space-2xl);
@@ -1647,9 +1620,7 @@ ul {
   gap: 0.5rem;
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+/* ---- Responsive ---- */
 @media (max-width: 980px) {
   .edu-hero-inner {
     grid-template-columns: 1fr;
@@ -1685,12 +1656,8 @@ ul {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .resources-grid {
+  .articles-grid {
     grid-template-columns: 1fr;
-  }
-
-  .video-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .hero-shield {
@@ -1755,20 +1722,24 @@ ul {
     font-size: var(--step-2);
   }
 
-  .video-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .video-card {
-    max-width: 100%;
-  }
-
   .case-card {
     padding: var(--space-md);
   }
 
-  .resource-card {
+  .article-card {
     padding: var(--space-sm);
+  }
+
+  .article-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .article-excerpt {
+    font-size: 0.85rem;
+  }
+
+  .article-full {
+    font-size: 0.85rem;
   }
 
   .feedback-form .btn-primary {
@@ -1780,77 +1751,6 @@ ul {
     width: 100%;
     justify-content: center;
   }
-}
-/* ============================================================
-   VIDEO LINK (Buka di YouTube)
-   ============================================================ */
-
-.video-link {
-  display: inline-block;
-  margin-top: 0.4rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--pink-dark);
-  text-decoration: none;
-  transition: color 0.2s var(--ease-out);
-}
-
-.video-link:hover {
-  color: var(--pink-bright);
-  text-decoration: underline;
-}
-
-.video-search-link {
-  color: var(--pink-dark);
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s var(--ease-out);
-}
-
-.video-search-link:hover {
-  text-decoration: underline;
-  color: var(--pink-bright);
-}
-
-/* Video card hover */
-.video-card:hover .video-link {
-  color: var(--pink-bright);
-}
-/* ============================================================
-   RESOURCE CARD — Hover efek lebih baik
-   ============================================================ */
-
-.resource-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
-  text-decoration: none;
-  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
-  display: block;
-  position: relative;
-  overflow: hidden;
-}
-
-.resource-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--pink), var(--peach));
-  opacity: 0;
-  transition: opacity 0.3s var(--ease-out);
-}
-
-.resource-card:hover::after {
-  opacity: 1;
-}
-
-.resource-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
 }
 /* ============================================================
    QUIZ PAGE — Premium Interaktif
