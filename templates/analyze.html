@@ -1,41 +1,41 @@
 {% extends "base.html" %}
 
-{% block title %}Analisis — ShareWise{% endblock %}
+{% block title %}Edukasi — ShareWise{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/analyze.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/education.css') }}" />
 {% endblock %}
 
 {% block content %}
 
 <!-- ===== HERO ===== -->
-<section class="analyze-hero">
-  <div class="container analyze-hero-inner">
-    <div class="analyze-hero-content">
-      <span class="section-tag">Analisis</span>
-      <h1>Periksa <span class="text-accent">Postingan</span> Anda</h1>
-      <p class="analyze-hero-desc">
-        Tempel teks caption, tweet, atau status. Deteksi data sensitif,
-        kata kasar, analisis sentimen, dan dapatkan versi aman secara otomatis.
+<section class="edu-hero">
+  <div class="container edu-hero-inner">
+    <div class="edu-hero-content">
+      <span class="section-tag">Belajar & Lindungi</span>
+      <h1>Edukasi <span class="text-accent">Privasi Digital</span></h1>
+      <p class="edu-hero-desc">
+        Pelajari cara melindungi informasi pribadi di dunia maya dan pahami
+        risiko oversharing di media sosial.
       </p>
-      <div class="analyze-hero-meta">
+      <div class="edu-hero-meta">
         <div class="meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          Deteksi PII
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+          Panduan Lengkap
         </div>
         <div class="meta-divider"></div>
         <div class="meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9"/></svg>
-          Analisis Sentimen
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          Tips Ahli
         </div>
         <div class="meta-divider"></div>
         <div class="meta-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Saran Perbaikan
+          Best Practices
         </div>
       </div>
     </div>
-    <div class="analyze-hero-visual">
+    <div class="edu-hero-visual">
       <div class="hero-shield">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -49,164 +49,567 @@
   </div>
 </section>
 
-<!-- ===== MAIN ===== -->
-<section class="analyze-main">
+<!-- ===== DEFINISI ===== -->
+<section class="edu-overview reveal-section">
   <div class="container">
-    <div class="analyze-layout">
-
-      <!-- ===== INPUT ===== -->
-      <div class="analyze-left">
-        <div class="card input-card">
-          <div class="card-header">
-            <h3>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-              Masukkan Teks
-            </h3>
-            <span class="text-muted">Caption, tweet, status, atau paragraf</span>
+    <div class="edu-overview-grid">
+      <div class="edu-overview-text">
+        <span class="section-tag">Definisi</span>
+        <h2>Apa Itu Oversharing?</h2>
+        <p>
+          Oversharing adalah tindakan membagikan terlalu banyak informasi pribadi
+          di media sosial atau platform digital, yang dapat meningkatkan risiko
+          privasi dan keamanan siber.
+        </p>
+        <p>
+          Postingan yang tampak sepele bisa mengekspos data sensitif yang dimanfaatkan
+          untuk pencurian identitas, phishing, atau social engineering.
+        </p>
+        <div class="edu-overview-stats">
+          <div class="stat-block">
+            <span class="stat-number" data-count="73">0%</span>
+            <span class="stat-label">pengguna overshare</span>
           </div>
-          <textarea
-            id="inputText"
-            class="input-area"
-            placeholder="Tulis atau tempel teks di sini..."
-            rows="6"
-          >Hai guys! Lagi liburan di Bali nih, seru banget! Rumahku di Jalan Melati No 12, Bandung. Hubungi 08123456789 ya kalo mau main. Senang banget bisa liburan!</textarea>
-          <div class="input-counter" id="charCounter">
-            <span id="charCount">0</span> karakter
+          <div class="stat-block">
+            <span class="stat-number" data-count="62">0%</span>
+            <span class="stat-label">ekspos data lokasi</span>
           </div>
-          <div id="errorMsg" class="error-msg" style="display: none;"></div>
-          <div class="input-footer">
-            <button id="analyzeBtn" class="btn-primary btn-block">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <span>Analisis Sekarang</span>
-            </button>
-            <button id="clearBtn" class="btn-outline btn-small">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-              Bersihkan
-            </button>
-          </div>
-          <div class="input-shortcut">
-            <kbd>Ctrl</kbd> + <kbd>Enter</kbd> untuk analisis
+          <div class="stat-block">
+            <span class="stat-number" data-count="45">0%</span>
+            <span class="stat-label">sebar kontak pribadi</span>
           </div>
         </div>
       </div>
+      <div class="edu-overview-image">
+        <div class="image-card">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <h4>Kenali Risikonya</h4>
+          <span class="image-tag">Tetap Waspada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <!-- ===== RESULTS ===== -->
-      <div class="analyze-right">
-        <div class="card result-card" id="resultContainer">
+<!-- ===== TIPE OVERSHARING ===== -->
+<section class="edu-types reveal-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">Kategori</span>
+      <h2>Tipe-Tipe Oversharing</h2>
+      <p>Informasi apa saja yang berisiko jika dibagikan secara publik.</p>
+    </div>
+    <div class="edu-types-grid">
+      <div class="type-card high-risk">
+        <div class="type-header">
+          <h3>Informasi Pribadi</h3>
+          <span class="type-badge danger">Risiko Tinggi</span>
+        </div>
+        <ul class="type-list">
+          <li>Nomor Telepon</li>
+          <li>Alamat Email</li>
+          <li>Alamat Rumah</li>
+          <li>Tanggal Lahir</li>
+          <li>Dokumen Identitas</li>
+        </ul>
+        <p class="type-desc">Dapat digunakan untuk pencurian identitas, penipuan, dan serangan terarah.</p>
+      </div>
+      <div class="type-card medium-risk">
+        <div class="type-header">
+          <h3>Informasi Aktivitas</h3>
+          <span class="type-badge warning">Risiko Sedang</span>
+        </div>
+        <ul class="type-list">
+          <li>Rencana Perjalanan</li>
+          <li>Rutinitas Harian</li>
+          <li>Lokasi Terkini</li>
+          <li>Aktivitas Keluarga</li>
+          <li>Jadwal Liburan</li>
+        </ul>
+        <p class="type-desc">Membuka pola yang bisa dimanfaatkan untuk stalking atau pencurian.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <!-- Placeholder -->
-          <div class="placeholder-state" id="placeholderState">
-            <div class="placeholder-icon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"/></svg>
-            </div>
-            <h4>Belum ada hasil</h4>
-            <p>Masukkan teks dan klik "Analisis Sekarang" untuk melihat potensi risiko privasi.</p>
+<!-- ===== POTENSI RISIKO ===== -->
+<section class="edu-risks reveal-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">Ancaman</span>
+      <h2>Potensi Risiko</h2>
+      <p>Bahaya yang sering muncul akibat oversharing informasi pribadi.</p>
+    </div>
+    <div class="edu-risks-grid">
+      <div class="risk-edu-card" data-delay="0">
+        <div class="risk-edu-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="risk-edu-content">
+          <h3>Pencurian Identitas</h3>
+          <p>Data pribadi dipakai untuk membuka rekening atau pinjaman atas nama Anda.</p>
+          <span class="risk-edu-badge high">Tinggi</span>
+        </div>
+      </div>
+      <div class="risk-edu-card" data-delay="100">
+        <div class="risk-edu-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9"/></svg>
+        </div>
+        <div class="risk-edu-content">
+          <h3>Serangan Phishing</h3>
+          <p>Penjahat siber membuat jebakan yang meyakinkan menggunakan info pribadi Anda.</p>
+          <span class="risk-edu-badge high">Tinggi</span>
+        </div>
+      </div>
+      <div class="risk-edu-card" data-delay="200">
+        <div class="risk-edu-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10a5 5 0 0 0-10 0c0 5 5 10 5 10s5-5 5-10z"/><circle cx="12" cy="10" r="2"/></svg>
+        </div>
+        <div class="risk-edu-content">
+          <h3>Social Engineering</h3>
+          <p>Manipulasi psikologis agar Anda membocorkan informasi lebih lanjut.</p>
+          <span class="risk-edu-badge medium">Sedang</span>
+        </div>
+      </div>
+      <div class="risk-edu-card" data-delay="300">
+        <div class="risk-edu-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="risk-edu-content">
+          <h3>Stalking</h3>
+          <p>Data lokasi dan rutinitas digunakan untuk melacak pergerakan Anda.</p>
+          <span class="risk-edu-badge medium">Sedang</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STUDI KASUS ===== -->
+<section class="edu-case-studies reveal-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">Studi Kasus</span>
+      <h2>Kejadian Nyata <span class="text-accent">Oversharing</span></h2>
+      <p>Contoh kasus oversharing yang terjadi di dunia nyata (identitas telah diubah).</p>
+    </div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-badge danger">Kasus 1</div>
+        <h3>Liburan yang Berubah Jadi Bencana</h3>
+        <p class="case-desc">
+          Seorang influencer memposting foto liburan ke luar negeri selama 2 minggu 
+          dengan caption lengkap jadwal dan lokasi hotel.
+        </p>
+        <div class="case-detail">
+          <span class="case-label">Dampak:</span>
+          <span class="case-value">Rumahnya kemalingan saat liburan</span>
+        </div>
+        <div class="case-lesson">
+          <span class="case-label">Pelajaran:</span>
+          <span class="case-value">Jangan posting jadwal liburan real-time. Tunggu sampai pulang!</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-badge warning">Kasus 2</div>
+        <h3>Nomor Telepon di Bio</h3>
+        <p class="case-desc">
+          Seorang pebisnis mencantumkan nomor telepon pribadi di bio Instagram 
+          untuk memudahkan klien menghubungi.
+        </p>
+        <div class="case-detail">
+          <span class="case-label">Dampak:</span>
+          <span class="case-value">Menerima puluhan spam call dan percobaan scam</span>
+        </div>
+        <div class="case-lesson">
+          <span class="case-label">Pelajaran:</span>
+          <span class="case-value">Gunakan nomor bisnis terpisah atau DM untuk kontak</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-badge danger">Kasus 3</div>
+        <h3>NIK Tersebar di Grup</h3>
+        <p class="case-desc">
+          Seseorang mengirim foto KTP di grup WhatsApp untuk keperluan verifikasi 
+          tanpa menyensor NIK dan alamat.
+        </p>
+        <div class="case-detail">
+          <span class="case-label">Dampak:</span>
+          <span class="case-value">Data digunakan untuk pinjaman online ilegal</span>
+        </div>
+        <div class="case-lesson">
+          <span class="case-label">Pelajaran:</span>
+          <span class="case-value">Selalu sensor data sensitif (NIK, alamat, tanda tangan) sebelum mengirim</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INFOGRAPHIS ===== -->
+<section class="edu-infographic reveal-section">
+  <div class="container">
+    <div class="infographic-wrapper">
+      <div class="infographic-text">
+        <span class="section-tag">Visual Data</span>
+        <h2>Fakta <span class="text-accent">Oversharing</span> di Indonesia</h2>
+        <p>Data dari berbagai survei tentang kebiasaan berbagi informasi di media sosial.</p>
+      </div>
+      <div class="infographic-grid">
+        <div class="infograph-item">
+          <span class="infograph-number">67%</span>
+          <span class="infograph-label">Pernah membagikan nomor telepon di medsos</span>
+        </div>
+        <div class="infograph-item">
+          <span class="infograph-number">52%</span>
+          <span class="infograph-label">Memposting alamat rumah di media sosial</span>
+        </div>
+        <div class="infograph-item">
+          <span class="infograph-number">44%</span>
+          <span class="infograph-label">Check-in lokasi real-time</span>
+        </div>
+        <div class="infograph-item">
+          <span class="infograph-number">38%</span>
+          <span class="infograph-label">Mengumumkan jadwal liburan</span>
+        </div>
+        <div class="infograph-item">
+          <span class="infograph-number">29%</span>
+          <span class="infograph-label">Pernah terkena dampak oversharing</span>
+        </div>
+        <div class="infograph-item">
+          <span class="infograph-number">82%</span>
+          <span class="infograph-label">Tidak sadar data mereka disalahgunakan</span>
+        </div>
+      </div>
+      <div class="infograph-source">
+        <span>Sumber: Survei Keamanan Digital Indonesia 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ARTIKEL EDUKASI ===== -->
+<section class="edu-articles reveal-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">Artikel</span>
+      <h2>Artikel <span class="text-accent">Edukasi</span></h2>
+      <p>Kumpulan artikel tentang privasi digital dan keamanan online yang ditulis khusus untuk Anda.</p>
+    </div>
+
+    <div class="articles-grid">
+      <!-- Artikel 1 -->
+      <div class="article-card">
+        <span class="article-badge">Panduan</span>
+        <h3>Apa Itu Oversharing dan Mengapa Berbahaya?</h3>
+        <p class="article-excerpt">
+          Oversharing adalah kebiasaan membagikan terlalu banyak informasi pribadi di media sosial. 
+          Banyak orang tidak menyadari bahwa informasi sederhana seperti lokasi, jadwal harian, 
+          atau nama hewan peliharaan bisa menjadi celah bagi pihak tidak bertanggung jawab.
+        </p>
+        <div class="article-full">
+          <p>
+            <strong>Oversharing</strong> berasal dari kata "over" (berlebihan) dan "sharing" (berbagi). 
+            Istilah ini menggambarkan perilaku seseorang yang membagikan informasi pribadi secara berlebihan 
+            di platform digital, tanpa mempertimbangkan konsekuensi jangka panjang.
+          </p>
+          <p>
+            <strong>Mengapa berbahaya?</strong> Data pribadi seperti nomor telepon, alamat rumah, 
+            atau jadwal liburan dapat dimanfaatkan oleh pelaku kejahatan siber untuk:
+          </p>
+          <ul>
+            <li>Pencurian identitas</li>
+            <li>Penipuan (scam) yang lebih meyakinkan</li>
+            <li>Stalking atau penguntitan</li>
+            <li>Pembobolan akun</li>
+          </ul>
+          <p>
+            <strong>Contoh kasus:</strong> Seorang pengguna memposting foto tiket pesawat dengan barcode terlihat. 
+            Barcode tersebut dapat di-scan oleh orang lain untuk mendapatkan data penerbangan dan identitas pemilik.
+          </p>
+          <p>
+            Oleh karena itu, penting untuk selalu berpikir dua kali sebelum membagikan sesuatu secara publik. 
+            Tanyakan: "Apakah informasi ini aman jika diketahui orang asing?"
+          </p>
+        </div>
+        <button class="btn-article-toggle">Baca Selengkapnya</button>
+      </div>
+
+      <!-- Artikel 2 -->
+      <div class="article-card">
+        <span class="article-badge">Tips</span>
+        <h3>5 Data Pribadi yang Sering Terlupakan</h3>
+        <p class="article-excerpt">
+          Ada beberapa informasi yang sering dianggap sepele, padahal sangat berisiko jika jatuh ke tangan yang salah. 
+          Berikut 5 data pribadi yang sering terlupakan oleh pengguna media sosial.
+        </p>
+        <div class="article-full">
+          <ol>
+            <li>
+              <strong>Nama Lengkap dan Nama Panggilan</strong> – Kombinasi nama bisa digunakan untuk 
+              mencari informasi lain tentang Anda di internet (OSINT).
+            </li>
+            <li>
+              <strong>Tanggal Lahir</strong> – Banyak digunakan sebagai verifikasi keamanan. 
+              Jangan pernah membagikan tanggal lahir secara publik.
+            </li>
+            <li>
+              <strong>Lokasi Rumah atau Kantor</strong> – Foto dengan latar belakang rumah atau kantor 
+              bisa mengungkap alamat Anda.
+            </li>
+            <li>
+              <strong>Nomor Telepon dan Email</strong> – Data ini adalah pintu masuk utama untuk 
+              serangan phishing dan spam.
+            </li>
+            <li>
+              <strong>Hobi dan Aktivitas Rutin</strong> – Pola aktivitas bisa digunakan untuk memprediksi 
+              kapan Anda tidak berada di rumah.
+            </li>
+          </ol>
+          <p>
+            Pastikan untuk tidak mencantumkan data-data di atas di profil publik Anda, 
+            atau gunakan pengaturan privasi yang ketat.
+          </p>
+        </div>
+        <button class="btn-article-toggle">Baca Selengkapnya</button>
+      </div>
+
+      <!-- Artikel 3 -->
+      <div class="article-card">
+        <span class="article-badge">Panduan</span>
+        <h3>Cara Melindungi Privasi di Media Sosial</h3>
+        <p class="article-excerpt">
+          Melindungi privasi di media sosial tidaklah sulit. Dengan beberapa langkah sederhana, 
+          Anda bisa mengurangi risiko oversharing dan menjaga keamanan data pribadi.
+        </p>
+        <div class="article-full">
+          <ol>
+            <li>
+              <strong>Atur Pengaturan Privasi</strong> – Pastikan akun Anda tidak terbuka untuk umum 
+              kecuali benar-benar diperlukan. Batasi siapa yang bisa melihat postingan, foto, dan informasi profil.
+            </li>
+            <li>
+              <strong>Hindari Check-in Lokasi</strong> – Fitur check-in memberi tahu orang lain di mana Anda berada. 
+              Gunakan hanya jika sangat diperlukan, dan jangan lakukan saat Anda sedang liburan atau di rumah.
+            </li>
+            <li>
+              <strong>Jangan Bagikan Data Sensitif</strong> – Nomor telepon, alamat, dan tanggal lahir 
+              sebaiknya tidak dicantumkan di bio atau postingan.
+            </li>
+            <li>
+              <strong>Gunakan Password yang Kuat</strong> – Kombinasi huruf besar/kecil, angka, dan simbol. 
+              Aktifkan autentikasi dua faktor (2FA) untuk keamanan ekstra.
+            </li>
+            <li>
+              <strong>Pikirkan Sebelum Posting</strong> – Tanyakan pada diri sendiri: 
+              "Apakah saya nyaman jika informasi ini diketahui oleh semua orang?"
+            </li>
+          </ol>
+          <p>
+            Dengan menerapkan langkah-langkah di atas, Anda dapat menikmati media sosial dengan lebih aman 
+            dan tenang.
+          </p>
+        </div>
+        <button class="btn-article-toggle">Baca Selengkapnya</button>
+      </div>
+
+      <!-- Artikel 4 -->
+      <div class="article-card">
+        <span class="article-badge">Edukasi</span>
+        <h3>Dampak Psikologis Oversharing</h3>
+        <p class="article-excerpt">
+          Oversharing tidak hanya berdampak pada keamanan fisik, tetapi juga kesehatan mental. 
+          Terlalu banyak membagikan kehidupan pribadi dapat menimbulkan stres dan kecemasan.
+        </p>
+        <div class="article-full">
+          <p>
+            <strong>Perasaan Tidak Aman</strong> – Ketika Anda membagikan terlalu banyak, 
+            Anda mungkin merasa kehilangan kendali atas informasi pribadi. Hal ini dapat memicu 
+            kecemasan dan paranoia.
+          </p>
+          <p>
+            <strong>Tekanan Sosial</strong> – Media sosial sering kali mendorong kita untuk 
+            terus membagikan momen-momen "sempurna". Oversharing bisa menjadi bentuk 
+            validasi diri yang berlebihan, yang berujung pada kelelahan mental.
+          </p>
+          <p>
+            <strong>Penyesalan di Kemudian Hari</strong> – Banyak orang menyesal setelah 
+            membagikan sesuatu yang bersifat pribadi. Postingan lama bisa muncul kembali 
+            dan merusak reputasi.
+          </p>
+          <p>
+            <strong>Tips mengatasi:</strong> Batasi waktu bermedia sosial, kurangi intensitas 
+            membagikan hal-hal yang terlalu pribadi, dan ingat bahwa kehidupan nyata 
+            lebih berharga daripada pencitraan di dunia maya.
+          </p>
+        </div>
+        <button class="btn-article-toggle">Baca Selengkapnya</button>
+      </div>
+
+      <!-- Artikel 5 -->
+      <div class="article-card">
+        <span class="article-badge">Tips</span>
+        <h3>Tips Aman Berbagi di Era Digital</h3>
+        <p class="article-excerpt">
+          Berbagi adalah hal yang baik, tetapi harus dilakukan dengan bijak. Berikut tips aman 
+          agar Anda tetap bisa berinteraksi di dunia digital tanpa mengorbankan privasi.
+        </p>
+        <div class="article-full">
+          <ul>
+            <li>
+              <strong>Gunakan Fitur "Teman Dekat"</strong> – Banyak platform memiliki fitur untuk 
+              membatasi audiens, misalnya "Close Friends" di Instagram.
+            </li>
+            <li>
+              <strong>Jangan Posting Informasi Waktu Nyata</strong> – Tunggu sampai Anda pulang 
+              untuk membagikan foto liburan.
+            </li>
+            <li>
+              <strong>Sensor Informasi Sensitif</strong> – Jika terpaksa harus mengirim foto dokumen, 
+              selalu sensor nomor, alamat, atau data penting lainnya.
+            </li>
+            <li>
+              <strong>Gunakan Nama Samaran</strong> – Jika memungkinkan, gunakan nama panggilan 
+              yang tidak terhubung langsung dengan identitas asli.
+            </li>
+            <li>
+              <strong>Edukasi Diri dan Keluarga</strong> – Ajarkan anggota keluarga tentang 
+              pentingnya menjaga privasi digital.
+            </li>
+          </ul>
+          <p>
+            Ingat, sekali diposting, informasi akan sulit dihapus sepenuhnya dari internet. 
+            Jadi, bijaklah dalam berbagi.
+          </p>
+        </div>
+        <button class="btn-article-toggle">Baca Selengkapnya</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIPS KEAMANAN ===== -->
+<section class="edu-tips reveal-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">Best Practices</span>
+      <h2>Tips Keamanan</h2>
+      <p>Langkah praktis untuk melindungi privasi online Anda.</p>
+    </div>
+    <div class="edu-tips-grid">
+      <div class="tip-card">
+        <span class="tip-number">01</span>
+        <h3>Batasi Kontak Pribadi</h3>
+        <p>Hindari memposting nomor telepon, email, atau alamat rumah secara publik.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-number">02</span>
+        <h3>Nonaktifkan Lokasi</h3>
+        <p>Matikan layanan lokasi real-time dan jangan check-in di tempat umum.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-number">03</span>
+        <h3>Jangan Umbar Rencana</h3>
+        <p>Bagikan foto liburan setelah pulang, bukan saat masih berlangsung.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-number">04</span>
+        <h3>Cek Pengaturan Privasi</h3>
+        <p>Perbarui pengaturan privasi akun medsos secara berkala.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-number">05</span>
+        <h3>Pikir Sebelum Posting</h3>
+        <p>Tanyakan: "Apakah ini pantas dilihat orang asing?" sebelum membagikan.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-number">06</span>
+        <h3>Password Kuat &amp; 2FA</h3>
+        <p>Gunakan kata sandi unik dan aktifkan autentikasi dua faktor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTOH OVERSHARING vs AMAN ===== -->
+<section class="edu-examples reveal-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-tag">Perbandingan</span>
+      <h2>Oversharing vs. Aman</h2>
+      <p>Perbedaan antara postingan berisiko dan yang aman.</p>
+    </div>
+    <div class="edu-examples-grid">
+      <div class="example-card danger-example">
+        <div class="example-badge danger-badge">Berisiko</div>
+        <div class="example-content">
+          <p class="example-text">
+            "Mau ke Bali seminggu. Rumah kosong. Hubungi 08123456789."
+          </p>
+          <ul class="example-issues">
+            <li class="issue-item">Membocorkan jadwal</li>
+            <li class="issue-item">Memberi tahu rumah kosong</li>
+            <li class="issue-item">Membagikan nomor telepon</li>
+            <li class="issue-item">Ekspos lokasi</li>
+          </ul>
+          <div class="example-risk-score">
+            <span>Skor Risiko: 92%</span>
+            <div class="risk-bar"><div style="width:92%;"></div></div>
           </div>
-
-          <!-- Loading -->
-          <div class="loading-state" id="loadingState" style="display:none;">
-            <div class="loader"></div>
-            <p>Menganalisis teks...</p>
-          </div>
-
-          <!-- Result -->
-          <div class="result-content" id="resultContent" style="display: none;">
-
-            <!-- Score -->
-            <div class="result-score-section">
-              <div class="score-ring">
-                <span class="score-number" id="riskScore">0</span>
-                <span class="score-label">/100</span>
-              </div>
-              <div class="score-info">
-                <span class="score-status" id="riskStatus">Aman</span>
-                <span class="score-desc" id="riskDesc">Teks ini tampaknya aman.</span>
-              </div>
-            </div>
-
-            <!-- Findings -->
-            <div class="result-findings">
-              <h4>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"/></svg>
-                Temuan
-              </h4>
-              <div id="findingsList" class="findings-list"></div>
-            </div>
-
-            <!-- Sentiment -->
-            <div class="result-sentiment">
-              <h4>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-                Analisis Sentimen
-              </h4>
-              <div class="sentiment-display" id="sentimentDisplay">
-                <span class="sentiment-label" id="sentimentLabel">Netral</span>
-                <div class="sentiment-bar">
-                  <div class="sentiment-fill" id="sentimentFill" style="width:50%;"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Safe Version -->
-            <div class="result-safe">
-              <h4>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-                Versi Aman
-              </h4>
-              <div class="safe-version" id="safeVersion">
-                <p>Klik tombol di bawah untuk melihat saran perbaikan.</p>
-              </div>
-              <button class="btn-outline btn-small" id="copySafeBtn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                Salin
-              </button>
-            </div>
-
+        </div>
+      </div>
+      <div class="example-card safe-example">
+        <div class="example-badge safe-badge">Aman</div>
+        <div class="example-content">
+          <p class="example-text">"Menikmati waktu berkualitas bareng keluarga."</p>
+          <ul class="example-issues safe-list">
+            <li class="issue-item safe">Tidak ada kontak pribadi</li>
+            <li class="issue-item safe">Tidak ada detail lokasi</li>
+            <li class="issue-item safe">Tidak ada pengumuman jadwal</li>
+            <li class="issue-item safe">Samar dan sadar privasi</li>
+          </ul>
+          <div class="example-risk-score safe-score">
+            <span>Skor Risiko: 12%</span>
+            <div class="risk-bar"><div style="width:12%;"></div></div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- ===== SUB PANELS ===== -->
-    <div class="sub-panels">
-      <!-- Stats -->
-      <div class="card stats-card">
-        <div class="card-header">
-          <h4>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12v-2a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v2"/><circle cx="12" cy="16" r="5"/><path d="M12 11v5"/></svg>
-            Statistik Cepat
-          </h4>
+<!-- ===== FEEDBACK ===== -->
+<section class="edu-feedback reveal-section">
+  <div class="container">
+    <div class="feedback-wrapper">
+      <span class="section-tag">Feedback</span>
+      <h2>Laporkan <span class="text-accent">Kesalahan Deteksi</span></h2>
+      <p>
+        Bantu kami meningkatkan akurasi! Jika kamu menemukan deteksi yang salah 
+        (false positive atau false negative), laporkan di sini.
+      </p>
+      <div class="feedback-form">
+        <div class="feedback-row">
+          <input type="text" id="feedbackText" class="feedback-input" placeholder="Contoh: '08123456789' tidak terdeteksi" />
         </div>
-        <div class="stats-mini">
-          <div class="stat-box">
-            <span class="stat-num" id="totalAnalyses">0</span>
-            <span class="stat-desc">Analisis</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-num" id="totalFindings">0</span>
-            <span class="stat-desc">Temuan</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-num" id="avgRisk">0%</span>
-            <span class="stat-desc">Risiko Rata-rata</span>
-          </div>
+        <div class="feedback-row">
+          <select id="feedbackType" class="feedback-select">
+            <option value="false_negative">Tidak terdeteksi (seharusnya terdeteksi)</option>
+            <option value="false_positive">Salah deteksi (seharusnya tidak terdeteksi)</option>
+            <option value="suggestion">Saran pola baru</option>
+          </select>
         </div>
-      </div>
-
-      <!-- History -->
-      <div class="card history-card">
-        <div class="card-header space-between">
-          <h4>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Riwayat
-          </h4>
-          <button id="clearHistoryBtn" class="btn-text-danger">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-            Hapus
-          </button>
-        </div>
-        <div id="historyList" class="history-list">
-          <p class="empty-state">Belum ada riwayat analisis.</p>
+        <button id="sendFeedbackBtn" class="btn-primary">
+          Kirim Feedback
+        </button>
+        <div id="feedbackSuccess" style="display:none;" class="feedback-success">
+          Terima kasih! Feedbackmu sangat membantu.
         </div>
       </div>
     </div>
@@ -214,12 +617,12 @@
 </section>
 
 <!-- ===== CTA ===== -->
-<section class="analyze-cta">
-  <div class="container analyze-cta-inner">
-    <h2>Pelajari lebih lanjut tentang <span class="text-accent">privasi digital</span></h2>
-    <p>Kunjungi halaman Edukasi untuk tips dan panduan keamanan online.</p>
-    <a href="/education" class="btn-primary btn-large">
-      <span>Jelajahi Edukasi</span>
+<section class="edu-cta reveal-section">
+  <div class="container edu-cta-inner">
+    <h2>Siap uji <span class="text-accent">pengetahuan privasi</span> Anda?</h2>
+    <p>Ikuti kuis interaktif kami dan cari tahu seberapa sadar privasi Anda.</p>
+    <a href="/quiz" class="btn-primary btn-large">
+      <span>Mulai Kuis</span>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </a>
   </div>
@@ -228,5 +631,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{{ url_for('static', filename='js/analyze.js') }}"></script>
+<script src="{{ url_for('static', filename='js/education.js') }}"></script>
 {% endblock %}
