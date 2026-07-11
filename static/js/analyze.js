@@ -313,10 +313,12 @@ function updateCharCounter() {
   const count = els.inputText.value.length;
   els.charCount.textContent = count;
   const counter = document.querySelector('.input-counter');
-  if (count > 500) {
-    counter.classList.add('warning');
-  } else {
-    counter.classList.remove('warning');
+  if (counter) {
+    if (count > 500) {
+      counter.classList.add('warning');
+    } else {
+      counter.classList.remove('warning');
+    }
   }
 }
 
