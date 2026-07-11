@@ -15,15 +15,14 @@
 
 <body>
 
-    <!-- ===== PAGE TRANSITION WRAPPER ===== -->
+    <!-- ===== PAGE TRANSITION ===== -->
     <div class="page-transition" id="pageTransition">
         <div class="page-content">
 
-            <!-- ===== NAVBAR ===== -->
+            <!-- ===== NAVBAR DENGAN TOGGLE ===== -->
             <nav class="navbar" id="navbar">
                 <div class="container nav-container">
                     <a href="/" class="logo" id="logoLink">
-                        <!-- Logo baru: SVG perisai + teks -->
                         <span class="logo-mark">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -33,6 +32,14 @@
                         <span class="logo-text">ShareWise</span>
                     </a>
 
+                    <!-- Tombol Hamburger -->
+                    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <!-- Menu Links -->
                     <ul class="nav-links" id="navLinks">
                         <li><a href="/" {% if request.path == '/' %}class="active"{% endif %}>Home</a></li>
                         <li><a href="/about" {% if request.path == '/about' %}class="active"{% endif %}>About</a></li>
@@ -48,10 +55,12 @@
                 {% block content %}{% endblock %}
             </main>
 
-            <!-- ===== FOOTER PREMIUM ===== -->
+            <!-- ===== FOOTER PREMIUM (PENDEEK DI HP) ===== -->
             <footer class="footer-premium">
                 <div class="container">
+                    <!-- Grid Footer (full di desktop, pendek di HP) -->
                     <div class="footer-grid">
+                        <!-- Brand -->
                         <div class="footer-col brand-col">
                             <a href="/" class="logo footer-logo">
                                 <span class="logo-mark">
@@ -62,12 +71,14 @@
                                 </span>
                                 <span class="logo-text">ShareWise</span>
                             </a>
-                            <p class="footer-desc">
+                            <!-- Deskripsi: sembunyi di HP -->
+                            <p class="footer-desc hide-mobile">
                                 Platform keamanan digital yang membantu kamu
                                 mendeteksi risiko privasi sebelum postingan
                                 tersebar ke publik.
                             </p>
-                            <div class="footer-social">
+                            <!-- Sosmed: sembunyi di HP -->
+                            <div class="footer-social hide-mobile">
                                 <a href="#" class="social-link" aria-label="Twitter">
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M4 4l11.733 16h4.267l-11.733 -16z"/>
@@ -96,50 +107,51 @@
                                 </a>
                             </div>
                         </div>
+
+                        <!-- Product: di HP jadi 2 kolom kecil -->
                         <div class="footer-col">
                             <h4 class="footer-heading">Product</h4>
                             <ul class="footer-links">
-                                <li><a href="/analyze">Privacy Scan</a></li>
-                                <li><a href="/quiz">Security Quiz</a></li>
-                                <li><a href="/education">Learning Hub</a></li>
-                                <li><a href="#">Changelog</a></li>
+                                <li><a href="/analyze">Scan</a></li>
+                                <li><a href="/quiz">Quiz</a></li>
+                                <li><a href="/education">Edukasi</a></li>
                             </ul>
                         </div>
+
+                        <!-- Company: di HP jadi 2 kolom kecil -->
                         <div class="footer-col">
                             <h4 class="footer-heading">Company</h4>
                             <ul class="footer-links">
-                                <li><a href="/about">About Us</a></li>
+                                <li><a href="/about">About</a></li>
                                 <li><a href="#">Blog</a></li>
-                                <li><a href="#">Careers</a></li>
                                 <li><a href="#">Contact</a></li>
                             </ul>
                         </div>
+
+                        <!-- Legal: di HP jadi 2 kolom kecil -->
                         <div class="footer-col">
                             <h4 class="footer-heading">Legal</h4>
                             <ul class="footer-links">
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Terms of Service</a></li>
-                                <li><a href="#">Cookie Policy</a></li>
+                                <li><a href="#">Privacy</a></li>
+                                <li><a href="#">Terms</a></li>
                                 <li><a href="#">Security</a></li>
                             </ul>
                         </div>
                     </div>
+
+                    <!-- Bottom Bar -->
                     <div class="footer-bottom-bar">
-                        <span class="footer-copy">&copy; 2026 ShareWise. All rights reserved.</span>
-                        <span class="footer-tagline">Protect your digital identity</span>
+                        <span class="footer-copy">&copy; 2026 ShareWise</span>
+                        <span class="footer-tagline hide-mobile">Protect your digital identity</span>
                     </div>
                 </div>
             </footer>
 
-        </div> <!-- /page-content -->
-    </div> <!-- /page-transition -->
-        <!-- ===== BACK TO TOP BUTTON ===== -->
-    <button 
-        id="backToTop" 
-        class="back-to-top" 
-        aria-label="Kembali ke atas"
-        title="Kembali ke atas"
-    >
+        </div>
+    </div>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="18 15 12 9 6 15"/>
         </svg>
@@ -150,4 +162,3 @@
     {% block extra_js %}{% endblock %}
 </body>
 </html>
-
