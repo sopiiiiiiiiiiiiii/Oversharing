@@ -1,9 +1,10 @@
 // ============================================================
-// ANALYZE — Premium Interaktif
+// ANALYZE — Premium Interaktif (Fix Duplikasi)
 // ============================================================
 
-// ---- DATA PATTERNS ----
+// ---- DATA PATTERNS (GABUNGAN LENGKAP) ----
 const patterns = {
+  // Kontak Pribadi
   phone: {
     regex: /(\+?62|0)[\s-]?8[1-9][\s-]?\d{1,4}[\s-]?\d{1,4}[\s-]?\d{1,4}/gi,
     label: 'Nomor Telepon',
@@ -14,28 +15,82 @@ const patterns = {
     label: 'Alamat Email',
     risk: 20
   },
+
+  // Alamat & Lokasi
   address: {
-    regex: /(Jl\.?|Jalan|Gg\.?|Gang|Kp\.?|Kampung|Perum|Perumahan|Apartemen|Kav\.?|Komplek)[\s-]?\w+[\s-]?\w*/gi,
+    regex: /(Jl\.?|Jalan|Gg\.?|Gang|Kp\.?|Kampung|Perum|Perumahan|Apartemen|Kav\.?|Komplek|RT|RW|Desa|Kelurahan|Kecamatan)[\s-]?\w+[\s-]?\w*/gi,
     label: 'Alamat Rumah',
     risk: 30
-  },
-  date: {
-    regex: /\b\d{1,2}\s+(Januari|Februari|Maret|April|Mei|Juni|Juli|Agustus|September|Oktober|November|Desember|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{4}\b/gi,
-    label: 'Tanggal Penting',
-    risk: 15
   },
   location: {
     regex: /(lagi|sedang|di)\s+[A-Z][a-z]+(\s+[A-Z][a-z]+)?(?!\s+(Bali|Jakarta|Bandung|Surabaya|Yogyakarta|Semarang|Medan|Makassar))/gi,
     label: 'Indikasi Lokasi',
     risk: 15
   },
+
+  // Identitas Pribadi
+  nik: {
+    regex: /\b[0-9]{16}\b/g,
+    label: 'NIK (KTP)',
+    risk: 35
+  },
+  fullName: {
+    regex: /\b(Nama saya|Nama ku|Namaku|saya|aku)\s+([A-Z][a-z]+(\s+[A-Z][a-z]+)?)\b/gi,
+    label: 'Nama Lengkap',
+    risk: 20
+  },
+  parentName: {
+    regex: /\b(Ibu|Bapak|Ayah|Mama|Papa|Orang tua)\s+([A-Z][a-z]+(\s+[A-Z][a-z]+)?)\b/gi,
+    label: 'Nama Orang Tua',
+    risk: 25
+  },
+
+  // Keuangan & Dokumen
+  bankAccount: {
+    regex: /\b[0-9]{10,16}\b/g,
+    label: 'Nomor Rekening',
+    risk: 30
+  },
+  creditCard: {
+    regex: /\b(4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})\b/g,
+    label: 'Kartu Kredit',
+    risk: 40
+  },
+
+  // Kendaraan
+  licensePlate: {
+    regex: /\b[B-DEF-GHI-JK-LM-NP-RST-UV-WXYZ]{1,2}\s?[0-9]{1,4}\s?[B-DEF-GHI-JK-LM-NP-RST-UV-WXYZ]{1,3}\b/gi,
+    label: 'Plat Nomor',
+    risk: 15
+  },
+
+  // Teknis
+  ipAddress: {
+    regex: /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/g,
+    label: 'Alamat IP',
+    risk: 10
+  },
+  dateOfBirth: {
+    regex: /\b\d{1,2}\s+(Januari|Februari|Maret|April|Mei|Juni|Juli|Agustus|September|Oktober|November|Desember|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{4}\b/gi,
+    label: 'Tanggal Lahir',
+    risk: 25
+  },
+
+  // Perjalanan & Aktivitas
   travel: {
-    regex: /(liburan|jalan-jalan|pergi|ke\s+)[A-Z][a-z]+(\s+[A-Z][a-z]+)?\s*(Bali|Jakarta|Bandung|Lombok|Yogyakarta|Malang|Surabaya)/gi,
+    regex: /(liburan|jalan-jalan|pergi|ke\s+)[A-Z][a-z]+(\s+[A-Z][a-z]+)?\s*(Bali|Jakarta|Bandung|Lombok|Yogyakarta|Malang|Surabaya|Luar Negeri|Eropa|Amerika|Asia)/gi,
     label: 'Rencana Perjalanan',
     risk: 20
   },
+  vacantHome: {
+    regex: /(rumah kosong|sedang pergi|liburan|kosong|ditinggal|pergi\s+(?:ke|jalan))/gi,
+    label: 'Indikasi Rumah Kosong',
+    risk: 30
+  },
+
+  // Kata Kasar
   profanity: {
-    regex: /(anjing|bangsat|kntl|memek|jancok|asu|ndas|tolol|goblok|bego|idiot|dungu|brengsek|sialan|anj|kontol)/gi,
+    regex: /(anjing|bangsat|kntl|memek|jancok|asu|ndas|tolol|goblok|bego|idiot|dungu|brengsek|sialan|anj|kontol|fuck|shit|bitch|asshole)/gi,
     label: 'Kata Kasar',
     risk: 10
   }
@@ -155,13 +210,11 @@ function renderResult(result) {
   els.loadingState.style.display = 'none';
   els.resultContent.style.display = 'block';
 
-  // Score
   els.riskScore.textContent = result.riskScore;
   els.riskStatus.textContent = result.statusLabel;
   els.riskStatus.className = `score-status ${result.statusColor}`;
   els.riskDesc.textContent = result.description;
 
-  // Findings
   const list = els.findingsList;
   list.innerHTML = '';
   if (result.findings.length === 0) {
@@ -178,19 +231,16 @@ function renderResult(result) {
     });
   }
 
-  // Sentiment
   const labels = { positive: 'Positif 😊', neutral: 'Netral 😐', negative: 'Negatif 😟' };
   els.sentimentLabel.textContent = labels[result.sentiment] || 'Netral';
   els.sentimentFill.style.width = `${result.sentimentPercent}%`;
   els.sentimentFill.className = `sentiment-fill ${result.sentiment}`;
 
-  // Safe version
   els.safeVersion.innerHTML = `
     <p>${result.redactedText}</p>
     ${result.findings.length > 0 ? `<p>Informasi sensitif telah disensor.</p>` : ''}
   `;
 
-  // Save history
   saveToHistory(result);
 }
 
@@ -361,114 +411,3 @@ setTimeout(() => {
 loadHistory();
 updateCharCounter();
 console.log('✦ ShareWise Analyze — loaded! ✦');
-// ============================================================
-// ANALYZE — Pola Deteksi Premium (Lengkap)
-// ============================================================
-
-const patterns = {
-  // ---- 1. Kontak Pribadi ----
-  phone: {
-    regex: /(\+?62|0)[\s-]?8[1-9][\s-]?\d{1,4}[\s-]?\d{1,4}[\s-]?\d{1,4}/gi,
-    label: '📱 Nomor Telepon',
-    risk: 25,
-    icon: '📱'
-  },
-  email: {
-    regex: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/gi,
-    label: '✉️ Alamat Email',
-    risk: 20,
-    icon: '✉️'
-  },
-
-  // ---- 2. Alamat & Lokasi ----
-  address: {
-    regex: /(Jl\.?|Jalan|Gg\.?|Gang|Kp\.?|Kampung|Perum|Perumahan|Apartemen|Kav\.?|Komplek|RT|RW|Desa|Kelurahan|Kecamatan)[\s-]?\w+[\s-]?\w*/gi,
-    label: '🏠 Alamat Rumah',
-    risk: 30,
-    icon: '🏠'
-  },
-  location: {
-    regex: /(lagi|sedang|di)\s+[A-Z][a-z]+(\s+[A-Z][a-z]+)?(?!\s+(Bali|Jakarta|Bandung|Surabaya|Yogyakarta|Semarang|Medan|Makassar))/gi,
-    label: '📍 Indikasi Lokasi',
-    risk: 15,
-    icon: '📍'
-  },
-
-  // ---- 3. Identitas Pribadi (BARU!) ----
-  nik: {
-    regex: /\b[0-9]{16}\b/g,
-    label: '🆔 NIK (KTP)',
-    risk: 35,
-    icon: '🆔'
-  },
-  fullName: {
-    regex: /\b(Nama saya|Nama ku|Namaku|saya|aku)\s+([A-Z][a-z]+(\s+[A-Z][a-z]+)?)\b/gi,
-    label: '👤 Nama Lengkap',
-    risk: 20,
-    icon: '👤'
-  },
-  parentName: {
-    regex: /\b(Ibu|Bapak|Ayah|Mama|Papa|Orang tua)\s+([A-Z][a-z]+(\s+[A-Z][a-z]+)?)\b/gi,
-    label: '👨‍👩‍👧 Nama Orang Tua',
-    risk: 25,
-    icon: '👨‍👩‍👧'
-  },
-
-  // ---- 4. Keuangan & Dokumen (BARU!) ----
-  bankAccount: {
-    regex: /\b[0-9]{10,16}\b/g,
-    label: '💳 Nomor Rekening',
-    risk: 30,
-    icon: '💳'
-  },
-  creditCard: {
-    regex: /\b(4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})\b/g,
-    label: '💳 Nomor Kartu Kredit',
-    risk: 40,
-    icon: '💳'
-  },
-
-  // ---- 5. Kendaraan (BARU!) ----
-  licensePlate: {
-    regex: /\b[B-DEF-GHI-JK-LM-NP-RST-UV-WXYZ]{1,2}\s?[0-9]{1,4}\s?[B-DEF-GHI-JK-LM-NP-RST-UV-WXYZ]{1,3}\b/gi,
-    label: '🚗 Plat Nomor',
-    risk: 15,
-    icon: '🚗'
-  },
-
-  // ---- 6. Teknis (BARU!) ----
-  ipAddress: {
-    regex: /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/g,
-    label: '🌐 Alamat IP',
-    risk: 10,
-    icon: '🌐'
-  },
-  dateOfBirth: {
-    regex: /\b\d{1,2}\s+(Januari|Februari|Maret|April|Mei|Juni|Juli|Agustus|September|Oktober|November|Desember|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{4}\b/gi,
-    label: '📅 Tanggal Lahir',
-    risk: 25,
-    icon: '📅'
-  },
-
-  // ---- 7. Perjalanan & Aktivitas ----
-  travel: {
-    regex: /(liburan|jalan-jalan|pergi|ke\s+)[A-Z][a-z]+(\s+[A-Z][a-z]+)?\s*(Bali|Jakarta|Bandung|Lombok|Yogyakarta|Malang|Surabaya|Luar Negeri|Eropa|Amerika|Asia)/gi,
-    label: '✈️ Rencana Perjalanan',
-    risk: 20,
-    icon: '✈️'
-  },
-  vacantHome: {
-    regex: /(rumah kosong|sedang pergi|liburan|kosong|ditinggal|pergi\s+(?:ke|jalan))/gi,
-    label: '🏚️ Indikasi Rumah Kosong',
-    risk: 30,
-    icon: '🏚️'
-  },
-
-  // ---- 8. Kata Kasar ----
-  profanity: {
-    regex: /(anjing|bangsat|kntl|memek|jancok|asu|ndas|tolol|goblok|bego|idiot|dungu|brengsek|sialan|anj|kontol|fuck|shit|bitch|asshole)/gi,
-    label: '⚠️ Kata Kasar',
-    risk: 10,
-    icon: '⚠️'
-  }
-};
